@@ -1,6 +1,4 @@
-Project-CY-FISH
-
-voici le projet cy-Fish groupe MEF-1 tri-H
+Project-CY-FISH groupe MEF-1 tri-H
 
 Membre du groupe : Bendaoued Idris
                    Hamelin Simon
