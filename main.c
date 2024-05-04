@@ -230,6 +230,6 @@ int main() {
     } else {
     afficher_support_de_jeux_impair(ligne, (colonne/2+1), poissons);
     }
-    
+    printf("Bonjour");
     return 0;
 }
