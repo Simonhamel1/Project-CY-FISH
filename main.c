@@ -229,6 +229,8 @@ int main() {
     afficher_support_de_jeux_pair(ligne, ((colonne/2)+1), poissons);
     } else {
     afficher_support_de_jeux_impair(ligne, (colonne/2+1), poissons);
+
+    printf
     }
     return 0;
 }
