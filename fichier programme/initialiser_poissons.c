@@ -1,4 +1,4 @@
-void initialiser_poissons(int ligne, int colonne, int poissons[][colonne]) {
+void initialiser_poissons(int ligne, int colonne, int** poissons) {
     srand(time(NULL)); // Initialisation du générateur de nombres aléatoires
 
     printf("voulez vous que soit aléatoire ou nom : (0-> oui 1-> nom)");
