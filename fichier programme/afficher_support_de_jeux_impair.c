@@ -1,5 +1,4 @@
 void afficher_support_de_jeux_impair(int ligne, int colonne, int poissons[][colonne]) {
-    initialiser_poissons(ligne, colonne ,poissons) ;// Initialisation du générateur de nombres aléatoires
 
     for (int i = 0; i <= ligne; i++) {
         // Affichage de la partie supérieure du motif
