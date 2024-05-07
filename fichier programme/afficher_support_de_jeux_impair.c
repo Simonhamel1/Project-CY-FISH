@@ -1,6 +1,6 @@
 void afficher_support_de_jeux_impair(int ligne, int colonne, int** poissons) {
 
-    for (int i = 0; i <= ligne; i++) {
+    for (int i = 0; i < ligne; i++) {
         // Affichage de la partie supérieure du motif
         for (int j = 0; j < colonne; j++) {
             if (i==0){

@@ -7,6 +7,7 @@
 #include "initialiser_poissons.c"
 #include "afficher_support_de_jeux_pair.c"
 #include "afficher_support_de_jeux_impair.c"
+#include "demander_case.c"
 
 int main() {
     int ligne = 5;
@@ -27,10 +28,8 @@ int main() {
     } else {
         afficher_support_de_jeux_impair(ligne, (colonne/2+1), poissons);
     }
-    printf("quelle case ? ");
-    int case_x,case_y;
-    scanf("%d %d",& case_x,&case_y);
-    printf("il y a %d poissons dans la case [%d][%d]",poissons[case_x][case_y],case_x,case_y);
+    
+    demander_case(poissons);
 
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {
@@ -38,5 +37,6 @@ int main() {
     }
     free(poissons);
 
+    printf("finish programme \U0001F600");
     return 0;
 }
