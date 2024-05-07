@@ -1,7 +1,7 @@
 void afficher_support_de_jeux_pair(int ligne, int colonne, int poissons[][colonne]) {
     initialiser_poissons(ligne, colonne, poissons); // Initialisation du générateur de nombres aléatoires
 
-    for (int i = 0; i < ligne+1; i++) {
+    for (int i = 0; i <= ligne; i++) {
         // Affichage de la partie supérieure du motif
         for (int j = 0; j < colonne; j++) {
             if ((i==0)&&(j!=colonne-1)){
