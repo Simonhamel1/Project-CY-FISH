@@ -7,8 +7,8 @@
 #include "afficher_support_de_jeux_impair.c"
 
 int main() {
-    int ligne = 5;
-    int colonne = 8;
+    int ligne = 3;
+    int colonne = 3;
     int poissons[ligne][colonne];
     if ((colonne % 2) == 0){
     afficher_support_de_jeux_pair(ligne, ((colonne/2)+1), poissons);
