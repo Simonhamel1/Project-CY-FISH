@@ -5,6 +5,7 @@
 #include <stdbool.h>
 
 #include "initialiser_poissons.c"
+#include "initialiser_poisson1.c"
 #include "afficher_support_de_jeux_pair.c"
 #include "afficher_support_de_jeux_impair.c"
 #include "demander_case.c"
@@ -22,7 +23,8 @@ int main() {
     for (int i = 0; i < ligne; i++) {
         poissons[i] = malloc(colonne * sizeof(int));
     }
-    initialiser_poissons(ligne, colonne ,poissons) ;
+    initialiser_poissons1(ligne, colonne, poissons) ;
+    //initialiser_poissons(ligne, colonne ,poissons) ;
     if ((colonne % 2) == 0){
         afficher_support_de_jeux_pair(ligne, ((colonne/2)+1), poissons);
     } else {
