@@ -72,4 +72,37 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int** poissons) {
             }
         }}
     }
+    // Ajout d'une dernière ligne d'hexagones sans poissons
+    printf("\n");
+    for (int j = 0; j < colonne; j++) {
+        if (j != colonne - 1) {
+            if (j==0){
+                printf("      \\     ");
+            }
+            else{ 
+            printf(" /    \\     ");
+            if (j== colonne-2){
+                printf(" /");
+            }
+            }
+        }
+    }
+    printf("\n");
+    for (int j = 0; j < colonne; j++) {
+        if (j != colonne - 1) {
+            if (j==0){
+                printf("       \\____");
+            }
+            else{
+            printf("/      \\____");
+            if (j == colonne-2){
+                printf("/");
+            }
+            }
+        }
+    }
+    
+
+    
+    printf("\n");
 }

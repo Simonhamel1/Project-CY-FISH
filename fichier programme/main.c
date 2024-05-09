@@ -12,7 +12,7 @@
 
 int main() {
     int ligne = 5;
-    int colonne = 5;
+    int colonne = 6;
     //printf("vous voulez combien de ligne : ");
     //scanf("%d",&ligne);
     //printf("vous voulez combien de colonne ");
