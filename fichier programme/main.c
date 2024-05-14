@@ -11,8 +11,8 @@
 #include "demander_case.c"
 
 int main() {
-    int ligne = 5;
-    int colonne = 6;
+    int ligne = 4;
+    int colonne = 4;
     //printf("vous voulez combien de ligne : ");
     //scanf("%d",&ligne);
     //printf("vous voulez combien de colonne ");
@@ -24,7 +24,7 @@ int main() {
         poissons[i] = malloc(colonne * sizeof(int));
     }
     initialiser_poissons1(ligne, colonne, poissons) ;
-    //initialiser_poissons(ligne, colonne ,poissons) ;
+    initialiser_poissons(ligne, colonne ,poissons) ;
     if ((colonne % 2) == 0){
         afficher_support_de_jeux_pair(ligne, ((colonne/2)+1), poissons);
     } else {

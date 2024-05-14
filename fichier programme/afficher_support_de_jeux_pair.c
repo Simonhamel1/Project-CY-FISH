@@ -62,7 +62,6 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int** poissons) {
             }
         }
         printf("\n");
-
         // Affichage de la partie inférieure du motif avec des poissons
         for (int j = 0; j < colonne; j++) {
             if (j != colonne - 1) {
@@ -71,13 +70,21 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int** poissons) {
                 printf(" \\");
             }
         }}
-    }
+    if (i== ligne-1){
     // Ajout d'une dernière ligne d'hexagones sans poissons
     printf("\n");
     for (int j = 0; j < colonne; j++) {
         if (j != colonne - 1) {
             if (j==0){
+                if (poissons[i][j]==3){
+                    printf("      \\ \U0001F41F\U0001F41F");
+                }
+                else if(poissons[i][j]==2){
+                    printf("      \\  \U0001F41F ");
+                }
+                else{
                 printf("      \\     ");
+                }
             }
             else{ 
             printf(" /    \\     ");
@@ -101,8 +108,8 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int** poissons) {
             }
         }
     }
-    
-
+    }
+    }
     
     printf("\n");
 }
