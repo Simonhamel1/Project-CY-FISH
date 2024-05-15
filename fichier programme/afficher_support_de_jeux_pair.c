@@ -56,7 +56,7 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int** poissons) {
                     printf("\\  \U0001F41F  /    ");
                 }
             } else {
-                if(i != ligne){
+                if(i != ligne && i != colonne){
                     printf("\\");
                 }
             }
@@ -66,7 +66,7 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int** poissons) {
         for (int j = 0; j < colonne; j++) {
             if (j != colonne - 1) {
                 printf(" \\____/     ");
-            } else if (i != ligne && i!= colonne-1 ) {
+            } else if (i != ligne && i!= colonne) {
                 printf(" \\");
             }
         }}
