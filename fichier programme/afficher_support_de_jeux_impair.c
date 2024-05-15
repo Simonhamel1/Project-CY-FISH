@@ -16,15 +16,15 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int** poissons) {
             } else if (i != 0 && j == colonne - 1) {
                 printf(" /    \\");
             } else {
-                if (j + 1 < colonne) {
-                    if (poissons[i][j] == 0) {
+                
+                    if (poissons[i][j+1] == 0 || poissons[i][j] == 1) {
                         printf(" /    \\     ");
-                    } else if (poissons[i][j] == 3) {
+                    } else if (poissons[i][j+1] == 3) {
                         printf(" /    \\ \U0001F41F\U0001F41F");
-                    } else {
+                    } else if (poissons[i][j+1] == 2){
                         printf(" /    \\  \U0001F41F ");
                     }
-                }
+                
             }
         }
         printf("\n");
@@ -49,26 +49,28 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int** poissons) {
 
         // Affichage de la dernière ligne du motif avec des poissons
         for (int j = 0; j < colonne; j++) {
-            if (poissons[i][j] == 0) {
+            if (poissons[i][j] == 0 || poissons[i][j] == 1) {
                 printf("\\      /    ");
             } else if (poissons[i][j] == 3) {
                 printf("\\ \U0001F41F\U0001F41F /    ");
-            } else {
+            } else if (poissons[i][j] == 2) {
                 printf("\\  \U0001F41F  /    ");
             }
         }
         printf("\n");
 
         // Affichage de la partie inférieure du motif avec des poissons
-        for (int j = 0; j < colonne; j++) {
-            if (i == ligne - 1 && i != ligne-1) {
-                if (j == colonne - 1 ) {
-                    printf(" \\____/");
-                } else {
+        for (int j = 0; j < colonne; j++) {   
+            if ( i== ligne-1 || j == colonne-1){
+                printf(" \\____/     ");
+            }
+            else {
+                if (poissons[i][j+1]==1){
                     printf(" \\____/  \U0001F41F ");
                 }
-            } else {
+                else {
                 printf(" \\____/     ");
+                }
             }
         }
     
