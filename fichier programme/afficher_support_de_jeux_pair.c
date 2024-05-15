@@ -1,4 +1,4 @@
-void afficher_support_de_jeux_pair(int ligne, int colonne, int** poissons) {
+void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int nbre_joueur, char noms_joueurs[6][50]) {
 
     for (int i = 0; i < ligne; i++) {
         // Affichage de la partie supérieure du motif
@@ -82,7 +82,10 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int** poissons) {
             if (j==colonne-2 && i != ligne-1){
                 printf(" \\") ;
             }
-        }
-    
+        } 
     }
+    printf("\n\n");
+        for (int i=0; i<nbre_joueur ; i++){
+            printf("le nom de la %d personne est : %s \n",i+1, noms_joueurs[i]);
+        }
 }
