@@ -3,12 +3,18 @@
 #include <stdbool.h>
 #include <time.h>
 
-#include "initialiser_poissons.c"
-#include "afficher_support_de_jeux_pair.c"
-#include "afficher_support_de_jeux_impair.c"
+#include "afficher_support_de_jeux/afficher_support_de_jeux_pair.c"
+#include "afficher_support_de_jeux/afficher_support_de_jeux_pair.h"
+#include "afficher_support_de_jeux/afficher_support_de_jeux_impair.c"
+#include "afficher_support_de_jeux/afficher_support_de_jeux_impair.h"
+#include "initialisation/initialiser_joueur/initialiser_joueurs.c"
+#include "initialisation/initialiser_joueur/initialiser_joueurs.h"
+#include "initialisation/initialiser_joueur/player.h"
+#include "initialisation/debut_du_jeu.c"
+#include "initialisation/initialiser_pingouin.c"
+#include "initialisation/initialiser_poissons.c"
 #include "pas_necessaire/demander_case.c"
-#include "initialiser_joueurs.c"
-#include "player.h"
+#include "pas_necessaire/demander_case.c"
 
 int main() {
     system("chcp 65001");
