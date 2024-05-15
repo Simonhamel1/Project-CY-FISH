@@ -5,10 +5,10 @@
 #include <stdbool.h>
 
 #include "initialiser_poissons.c"
-#include "initialiser_poisson1.c"
 #include "afficher_support_de_jeux_pair.c"
 #include "afficher_support_de_jeux_impair.c"
 #include "demander_case.c"
+#include "initialisation_pingouin.c"
 
 int main() {
     int ligne = 3;
