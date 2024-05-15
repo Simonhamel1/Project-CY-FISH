@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "player.h": "c",
-        "afficher_support_de_jeux_impair.h": "c",
-        "initialiser_joueurs.h": "c",
-        "afficher_support_de_jeux_pair.h": "c"
-    }
-}
