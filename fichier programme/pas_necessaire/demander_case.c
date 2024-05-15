@@ -12,5 +12,5 @@ void demander_case(int** poissons){
         printf("il y a %d poissons dans la case [%d][%d]",poissons[case_x][case_y],case_x,case_y);
         printf("\nvous voulez revoir une case (1->non) ? ");
         scanf("%d",&choix);
-}
+    }
 }
