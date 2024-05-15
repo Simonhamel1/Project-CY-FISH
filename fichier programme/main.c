@@ -4,8 +4,8 @@
 #include <time.h>
 
 #include "afficher_support_de_jeux/afficher_support_de_jeux_pair.c"
-#include "afficher_support_de_jeux/afficher_support_de_jeux_pair.h"
 #include "afficher_support_de_jeux/afficher_support_de_jeux_impair.c"
+#include "afficher_support_de_jeux/afficher_support_de_jeux_pair.h"
 #include "afficher_support_de_jeux/afficher_support_de_jeux_impair.h"
 #include "initialisation/initialiser_joueur/initialiser_joueurs.c"
 #include "initialisation/initialiser_joueur/initialiser_joueurs.h"

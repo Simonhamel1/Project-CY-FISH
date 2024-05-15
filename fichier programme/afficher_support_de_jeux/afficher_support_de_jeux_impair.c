@@ -1,4 +1,4 @@
-#include "afficher_support_de_jeux/afficher_support_de_jeux_impair.h"
+#include "afficher_support_de_jeux_impair.h"
 
 void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int nbre_joueur, Player joueurs[6]) {
 
