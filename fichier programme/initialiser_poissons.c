@@ -11,11 +11,20 @@ void initialiser_poissons(int ligne, int colonne, int** poissons) {
     if (choix == 1){
         for (int i = 0 ; i< ligne ; i++){
             for (int j = 0; j < colonne  ; j++) {
+                if (i != ligne-1){
+                printf("donner le nombre de poissons dans la case [%d][%d] : ",i,j);
+                scanf("%d",&poissons[i][j]);
+                while (poissons[i][j]<0 || poissons[i][j]>3 ){
+                    printf("redonner le nombre de poissons dans la case [%d][%d] :",i,j);
+                    scanf("%d",&poissons[i][j]);}
+                }
+                else { if (j%2==0){
                 printf("donner le nombre de poissons dans la case [%d][%d] : ",i,j);
                 scanf("%d",&poissons[i][j]);
                 while (poissons[i][j]<0 || poissons[i][j]>3 ){
                     printf("redonner le nombre de poissons dans la case [%d][%d] :",i,j);
                     scanf("%d",&poissons[i][j]);
+                    }}
                 }
             }
         }

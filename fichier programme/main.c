@@ -11,8 +11,8 @@
 #include "initialisation_pingouin.c"
 
 int main() {
-    int ligne = 3;
-    int colonne = 3;
+    int ligne ;
+    int colonne ;
     printf("vous voulez combien de ligne : ");
     scanf("%d",&ligne);
     printf("vous voulez combien de colonne ");
