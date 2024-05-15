@@ -13,10 +13,10 @@
 int main() {
     int ligne = 3;
     int colonne = 3;
-    //printf("vous voulez combien de ligne : ");
-    //scanf("%d",&ligne);
-    //printf("vous voulez combien de colonne ");
-    //scanf("%d",&colonne);
+    printf("vous voulez combien de ligne : ");
+    scanf("%d",&ligne);
+    printf("vous voulez combien de colonne ");
+    scanf("%d",&colonne);
 
     //Allocation de mémoire pour le tableau dynamique
     int **poissons = malloc(ligne * sizeof(int*));
@@ -27,9 +27,9 @@ int main() {
     //initialiser_poissons1(ligne, colonne, poissons) ;
     initialiser_poissons(ligne, colonne ,poissons) ;
     if ((colonne % 2) == 0){
-        afficher_support_de_jeux_pair(ligne, ((colonne/2)+1), poissons);
+        afficher_support_de_jeux_pair(ligne, colonne, poissons);
     } else {
-        afficher_support_de_jeux_impair(ligne, (colonne/2+1), poissons);
+        afficher_support_de_jeux_impair(ligne, colonne, poissons);
     }
     
     demander_case(poissons);
