@@ -1,4 +1,6 @@
-void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int nbre_joueur, char noms_joueurs[6][50]){
+#include "afficher_support_de_jeux_impair.h"
+
+void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int nbre_joueur, Player joueurs[6]) {
 
     for (int i = 0; i < ligne; i++) {
         // Affichage de la partie supérieure du motif
@@ -73,10 +75,10 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int
         }
     
     }
-    
     printf("\n\n");
-        for (int i=0; i<nbre_joueur ; i++){
-            printf("le nom de la %d personne est : %s \n",i+1, noms_joueurs[i]);
-        }
-        printf("\n"); 
+    // Display player names and scores
+    printf("Les joueurs sont :\n");
+    for (int i = 0; i < nbre_joueur; i++) {
+        printf("Joueur %d : %s (Score: %d)\n", i + 1, joueurs[i].name, joueurs[i].score);
+    }
 }

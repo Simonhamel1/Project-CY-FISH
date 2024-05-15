@@ -8,15 +8,16 @@
 #include "afficher_support_de_jeux_impair.c"
 #include "pas_necessaire/demander_case.c"
 #include "initialiser_joueurs.c"
+#include "player.h"
 
 int main() {
     system("chcp 65001");
 
     // Initialisation joueurs
     int nbre_joueur;
-    char noms_joueurs[6][50]; // Assumer que le nom de chaque joueur ne dépasse pas 50 caractères
+    Player joueurs[6]; // Assume there can be up to 6 players
 
-    initialiser_joueurs(&nbre_joueur, noms_joueurs);
+    initialiser_joueurs(&nbre_joueur, joueurs);
 
     // Initialisation plateau
     int ligne, colonne;
@@ -43,9 +44,9 @@ int main() {
     //initialiser_poissons1(ligne, colonne, poissons);
     initialiser_poissons(ligne, colonne, poissons);
     if ((colonne % 2) == 0) {
-        afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, noms_joueurs);
+        afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
     } else {
-        afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur, noms_joueurs);
+        afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur, joueurs);
     }
     
     // Demander case
