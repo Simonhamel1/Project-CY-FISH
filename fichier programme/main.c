@@ -7,10 +7,12 @@
 #include "initialiser_poissons.c"
 #include "afficher_support_de_jeux_pair.c"
 #include "afficher_support_de_jeux_impair.c"
-#include "demander_case.c"
+#include "pas_necessaire/demander_case.c"
 #include "initialisation_pingouin.c"
+#include "pas_necessaire/initialisation_poissons1.c"
 
 int main() {
+    system("chcp 65001");
     int ligne ;
     int colonne ;
     printf("vous voulez combien de ligne : ");
@@ -24,7 +26,7 @@ int main() {
     poissons[i] = malloc(colonne * sizeof(int));
     }
 
-    //initialiser_poissons1(ligne, colonne, poissons) ;
+    initialiser_poissons1(ligne, colonne, poissons) ;
     initialiser_poissons(ligne, colonne ,poissons) ;
     if ((colonne % 2) == 0){
         afficher_support_de_jeux_pair(ligne, colonne, poissons);
