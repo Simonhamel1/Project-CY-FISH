@@ -10,16 +10,20 @@
 #include "pas_necessaire/demander_case.c"
 #include "initialisation_pingouin.c"
 #include "pas_necessaire/initialisation_poissons1.c"
+#include "debut_du_jeu.c"
 
 int main() {
     system("chcp 65001");
+    
+    debut_du_jeu();
+
     int ligne ;
     int colonne ;
     printf("vous voulez combien de ligne : ");
     scanf("%d",&ligne);
     printf("vous voulez combien de colonne ");
     scanf("%d",&colonne);
-
+    
     //Allocation de mémoire pour le tableau dynamique
     int **poissons = malloc(ligne * sizeof(int*));
     for (int i = 0; i < ligne; i++) {
