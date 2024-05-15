@@ -32,7 +32,7 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int** poissons) {
         // Affichage de la partie intermédiaire du motif avec des poissons
         for (int j = 0; j < colonne; j++) {
             if (j != colonne - 1) {
-                if (poissons[i][j] == 0 || i == ligne - 1) {
+                if (poissons[i][j] == 0) {
                     printf("/      \\____");
                 } else {
                     printf("/  \U0001F41F  \\____");
@@ -65,7 +65,7 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int** poissons) {
                 printf(" \\____/     ");
             }
             else {
-                if (poissons[i][j+1]==1){
+                if (poissons[i][j+1]!=0){
                     printf(" \\____/  \U0001F41F ");
                 }
                 else {
