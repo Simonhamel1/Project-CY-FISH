@@ -25,8 +25,17 @@ int main() {
     int ligne, colonne;
     printf("Vous voulez combien de ligne : ");
     scanf("%d", &ligne);
+    while(ligne < 9 ){
+        printf("redonner le nombre de ligne : ");
+        scanf("%d",& ligne);
+    }
     printf("Vous voulez combien de colonne : ");
     scanf("%d", &colonne);
+    while ( colonne < 9){
+        printf("redonner le nombre de colonne : ");
+        scanf("%d",&colonne);
+    }
+    
     
     // Allocation de mémoire pour le tableau dynamique
     int **poissons = malloc(ligne * sizeof(int *));
@@ -44,7 +53,7 @@ int main() {
 
     // Initialize and display the board
     //initialiser_poissons1(ligne, colonne, poissons);
-    initialiser_poissons(ligne, colonne, poissons);
+    initialiser_poissons(ligne, colonne, poissons,nbre_joueur);
     if ((colonne % 2) == 0) {
         afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
     } else {
