@@ -1,4 +1,4 @@
-#include "initialisation/initialiser_joueur/player.h"
+#include "initialisation/initialiser_joueur/player.c"
 
 void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int nbre_joueur, Player joueurs[6]) {
     for (int i = 0; i < ligne; i++) {
