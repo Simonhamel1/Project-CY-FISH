@@ -1,4 +1,4 @@
-#include "player.c"
+#include "player.h"
 
 void initialiser_joueurs(int *nbre_joueur, Player joueurs[6]) {
     printf("Entrez le nombre de joueurs (entre 2 et 6) : ");

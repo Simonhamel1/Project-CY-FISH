@@ -33,7 +33,7 @@ int main() {
     scanf("%d", &colonne);
     while ( colonne < 9){
         printf("redonner le nombre de colonne : ");
-        scanf("%d",&colonne);
+        scanf("%d",& colonne);
     }
     
     
@@ -53,7 +53,7 @@ int main() {
 
     // Initialize and display the board
     //initialiser_poissons1(ligne, colonne, poissons);
-    initialiser_poissons(ligne, colonne, poissons,nbre_joueur);
+    initialiser_poissons(ligne, colonne, poissons, nbre_joueur);
     if ((colonne % 2) == 0) {
         afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
     } else {
