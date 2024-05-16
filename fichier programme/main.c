@@ -3,13 +3,18 @@
 #include <stdbool.h>
 #include <time.h>
 
+#include "gestion_du_jeu/demander_case.c"
+#include "gestion_du_jeu/demander_variante.c"
+#include "gestion_du_jeu/variante1.c"
+#include "gestion_du_jeu/variante2.c"
+#include "gestion_du_jeu/variante3.c"
 #include "afficher_support_de_jeux_pair.c"
 #include "afficher_support_de_jeux_impair.c"
 #include "initialisation/initialiser_joueur/initialiser_joueurs.c"
 #include "initialisation/debut_du_jeu.c"
 #include "initialisation/initialiser_pingouin.c"
 #include "initialisation/initialiser_poissons.c"
-#include "gestion_du_jeu/demander_case.c"
+
 
 
 int main() {
@@ -36,7 +41,6 @@ int main() {
         scanf("%d",& colonne);
     }
     
-    
     // Allocation de mémoire pour le tableau dynamique
     int **poissons = malloc(ligne * sizeof(int *));
     if (poissons == NULL) {
@@ -50,8 +54,9 @@ int main() {
             return 1; // Exit the program due to memory allocation failure
         }
     }
-
-    // Initialize and display the board
+    //demander variante 
+    int variante = choose_variant();
+    
     //initialiser_poissons1(ligne, colonne, poissons);
     initialiser_poissons(ligne, colonne, poissons, nbre_joueur);
     if ((colonne % 2) == 0) {
