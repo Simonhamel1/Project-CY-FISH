@@ -9,7 +9,7 @@
 #include "initialisation/debut_du_jeu.c"
 #include "initialisation/initialiser_pingouin.c"
 #include "initialisation/initialiser_poissons.c"
-#include "pas_necessaire/demander_case.c"
+#include "gestion_du_jeu/demander_case.c"
 
 
 int main() {
@@ -52,7 +52,7 @@ int main() {
     }
     
     // Demander case
-    demander_case(poissons);
+    demander_case(poissons, colonne, ligne);
 
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {
