@@ -36,7 +36,7 @@ int main() {
     }
     printf("Vous voulez combien de colonne : ");
     scanf("%d", &colonne);
-    while ( colonne < 9){
+    while ( colonne < 9 || colonne > 26){
         printf("redonner le nombre de colonne : ");
         scanf("%d",& colonne);
     }
