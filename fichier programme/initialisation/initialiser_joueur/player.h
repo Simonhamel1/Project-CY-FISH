@@ -8,8 +8,8 @@ typedef struct {
 typedef struct {
     char nom[50];
     int nombre_pingouins;
-    Pingouin pingouins[4];  // tableau de pingouins, ajuster selon le nombre maximum de pingouins par joueur
+    Pingouin *pingouins;  // tableau de pingouins, ajuster selon le nombre maximum de pingouins par joueur
     int score;
 } Joueur;
 
-#endif // PLAYER_H
+#endif // JOUEUR_H

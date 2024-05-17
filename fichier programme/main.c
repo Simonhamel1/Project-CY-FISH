@@ -18,11 +18,21 @@
 #include "initialisation/initialiser_poissons.c"
 #include "initialisation/placement.h"
 
+#include "demander_case.c"
+
 int main() {
     system("chcp 65001");  // Configure l'encodage en UTF-8 sur la console Windows
 
     // Initialisation des joueurs
     int nbre_joueur;
+    printf("vous êtes combien de joueurs ? ");
+    scanf("%d",&nbre_joueur);
+    while (nbre_joueur>6 || nbre_joueur<0)
+    {
+        printf("redonner le nombre de joueurs : ");
+        scanf("%d",&nbre_joueur);
+    }
+    
     Joueur joueurs[6]; // Suppose qu'il peut y avoir jusqu'à 6 joueurs
 
     initialiser_joueurs(nbre_joueur, joueurs);
@@ -61,8 +71,7 @@ int main() {
     // Initialisation des pingouins
 
     Placement tab[6][6]; // Tableau de placements de pingouins
-    Verif grille[10][10]; // Grille de vérification pour les pingouins
-    initialisation_Pingouin(joueurs, nbre_joueur,grille, ligne, colonne, mode);
+    initialisation_Pingouin(joueurs, nbre_joueur, ligne, colonne, poissons);
 
     // Affichage du support de jeu en fonction du nombre de colonnes
     if ((colonne % 2) == 0) {
@@ -72,7 +81,7 @@ int main() {
     }
     //derouler du jeu
     //derouler_du_jeu(poissons, colonne, ligne, joueurs, nbre_joueur, mode);
-
+    demander_case(poissons);
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {
         free(poissons[i]);
