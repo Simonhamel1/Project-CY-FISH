@@ -4,7 +4,7 @@
 #define FISH_GOLDEN 3
 
 // Prototype de la fonction pour choisir la variante
-int choose_variant() {
+int choisir_variante() {
     int variant;
     printf("Choisissez une variante pour le jeu:\n");
     printf("1: Normal (Chaque poisson vaut 1 point)\n");
