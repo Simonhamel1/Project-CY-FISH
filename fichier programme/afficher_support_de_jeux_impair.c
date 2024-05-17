@@ -1,6 +1,6 @@
 #include "initialisation/initialiser_joueur/player.h"
 
-void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int nbre_joueur, Player joueurs[6]) {
+void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6]) {
 
     for (int i = 0; i < ligne; i++) {
         // Affichage de la partie supérieure du motif

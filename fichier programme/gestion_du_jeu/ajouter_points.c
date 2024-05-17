@@ -1,16 +1,12 @@
 #include "case.h"
 #include "../initialisation/initialiser_joueur/player.h"
 
-void ajouter_points(int** poissons, int colonne, int ligne, Player* joueurs, int nbre_joueur, int joueur_actuel) {
+void ajouter_points(int** poissons, int colonne, int ligne, Joueur* joueurs, int nbre_joueur, int joueur_actuel) {
     if (joueur_actuel < 0 || joueur_actuel >= nbre_joueur) {
         printf("Index du joueur actuel invalide.\n");
         return;
     }
-
-    Case case_choisie = demander_case(poissons, colonne, ligne);
-    int x = case_choisie.x;
-    int y = case_choisie.y;
-
+    int x,y;
     // Validation des indices x et y
     if (x < 0 || x >= colonne || y < 0 || y >= ligne) {
         printf("Indices de case hors limites.\n");

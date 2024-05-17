@@ -7,6 +7,8 @@
 void initialisation_Pingouin(Joueur* joueurs, int nb_joueur, Verif grille[][10], int lignes, int colonnes, int mode) {
     srand(time(0)); // Initialisation du générateur de nombres aléatoires
 
+    
+
     for (int i = 0; i < nb_joueur; i++) {
         for (int j = 0; j < joueurs[i].nombre_pingouins; j++) {
             if (mode == 1) { // Mode manuel
