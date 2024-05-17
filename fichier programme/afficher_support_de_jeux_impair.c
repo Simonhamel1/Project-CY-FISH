@@ -79,6 +79,6 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int
     // Display player names and scores
     printf("Les joueurs sont :\n");
     for (int i = 0; i < nbre_joueur; i++) {
-        printf("Joueur %d : %s (Score: %d)\n", i + 1, joueurs[i].name, joueurs[i].score);
+        printf("Joueur %d : %s (Score: %d)\n", i + 1, joueurs[i].nom, joueurs[i].score);
     }
 }

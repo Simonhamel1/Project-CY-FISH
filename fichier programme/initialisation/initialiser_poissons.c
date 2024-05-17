@@ -1,7 +1,7 @@
-void initialiser_poissons(int ligne, int colonne, int nbre_joueur, int** poissons) {
+void initialiser_poissons(int ligne, int colonne, int** poissons) {
     srand(time(0)); // Initialisation du générateur de nombres aléatoires
 
-    printf("voulez vous que soit aléatoire ou nom (0-> oui 1-> nom) : ");
+    printf("voulez vous que l'initialisation soit aléatoire ou nom (0-> oui 1-> nom) : ");
     int choix;
     scanf("%d",&choix);
     while (choix!=0 && choix!= 1){

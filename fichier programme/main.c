@@ -3,8 +3,8 @@
 #include <stdbool.h>
 #include <time.h>
 
-#include "gestion_du_jeu/demander_case.h"
-#include "gestion_du_jeu/derouler_du_jeu.c"
+#include "gestion_du_jeu/demander_case.c"
+#include "gestion_du_jeu/derouler_du_jeux.c"
 #include "gestion_du_jeu/variante/demander_variante.c"
 #include "gestion_du_jeu/variante/variante1.c"
 #include "gestion_du_jeu/variante/variante2.c"
@@ -25,9 +25,9 @@ int main() {
 
     // Initialisation des joueurs
     int nbre_joueur;
-    Player joueurs[6]; // Suppose qu'il peut y avoir jusqu'à 6 joueurs
+    Joueur joueurs[6]; // Suppose qu'il peut y avoir jusqu'à 6 joueurs
 
-    initialiser_joueurs(&nbre_joueur, joueurs);
+    initialiser_joueurs(nbre_joueur, joueurs);
 
     // Initialisation du plateau
     int ligne, colonne;
@@ -58,13 +58,13 @@ int main() {
     int mode = choisir_variante();
 
     // Initialisation du plateau de poissons
-    initialiser_poissons(ligne, colonne, poissons, nbre_joueur);
+    initialiser_poissons(ligne, colonne, poissons);
 
     // Initialisation des pingouins
 
     Placement tab[6][6]; // Tableau de placements de pingouins
     Verif grille[10][10]; // Grille de vérification pour les pingouins
-    initialisation_Penguins(tab, grille, ligne, colonne, nbre_joueur, mode);
+    initialisation_Pingouin(tab, grille, ligne, colonne, nbre_joueur, mode);
 
     // Affichage du support de jeu en fonction du nombre de colonnes
     if ((colonne % 2) == 0) {

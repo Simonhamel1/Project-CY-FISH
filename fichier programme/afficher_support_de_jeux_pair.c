@@ -1,6 +1,6 @@
 #include "initialisation/initialiser_joueur/player.h"
 
-void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int nbre_joueur, Player joueurs[6]) {
+void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6]) {
     for (int i = 0; i < ligne; i++) {
         // Affichage de la partie supérieure du motif
         for (int j = 0; j < colonne; j += 2) {
@@ -89,6 +89,6 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int n
     // Display player names and scores
     printf("Les joueurs sont :\n");
     for (int i = 0; i < nbre_joueur; i++) {
-        printf("Joueur %d : %s (Score: %d)\n", i + 1, joueurs[i].name, joueurs[i].score);
+        printf("Joueur %d : %s (Score: %d)\n", i + 1, joueurs[i].nom, joueurs[i].score);
     }
 }

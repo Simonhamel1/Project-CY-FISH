@@ -1,5 +1,5 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef JOUEUR_H
+#define JOUEUR_H
 
 typedef struct {
     int x, y;
@@ -10,6 +10,6 @@ typedef struct {
     int nombre_pingouins;
     Pingouin pingouins[4];  // tableau de pingouins, ajuster selon le nombre maximum de pingouins par joueur
     int score;
-} Player;
+} Joueur;
 
 #endif // PLAYER_H
