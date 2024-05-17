@@ -5,9 +5,9 @@
 
 #include "gestion_du_jeu/demander_case.c"
 #include "gestion_du_jeu/demander_variante.c"
-#include "gestion_du_jeu/variante1.c"
-#include "gestion_du_jeu/variante2.c"
-#include "gestion_du_jeu/variante3.c"
+#include "gestion_du_jeu/variante/variante1.c"
+#include "gestion_du_jeu/variante/variante2.c"
+#include "gestion_du_jeu/variante/variante3.c"
 #include "gestion_du_jeu/ajouter_points.c"
 #include "gestion_du_jeu/case.h"
 #include "initialisation/initialiser_joueur/player.h"
@@ -64,9 +64,7 @@ int main() {
     } else {
         afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur ,joueurs);
     }
-    
-    // Interaction pour demander une case
-    demander_case(poissons, colonne, ligne);
+
     //essai d eajouter des score a un joueurs
     ajouter_points(poissons, colonne, ligne, joueurs, nbre_joueur, 1);
 

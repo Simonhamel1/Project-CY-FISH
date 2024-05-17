@@ -1,5 +1,4 @@
 #include "case.h"
-#include "demander_case.h"
 #include "../initialisation/initialiser_joueur/player.h"
 
 void ajouter_points(int** poissons, int colonne, int ligne, Player* joueurs, int nbre_joueur, int joueur_actuel) {

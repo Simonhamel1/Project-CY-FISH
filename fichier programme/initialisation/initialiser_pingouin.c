@@ -1,15 +1,8 @@
-typedef struct {
-    int x;
-    int y;
-} Placement;
-
-typedef struct {
-    int occupe;  // Indique si la case est occupée (0 = non, 1 = oui)
-    int fish;    // Nombre de poissons dans la case (pré-initialisé ailleurs)
-} Verif;
+#include "verif.h"
+#include "placement.h"
 
 void initialisation_Penguins(Placement tab[], Verif grille[][10], int lignes, int colonnes, int nb_joueur) {
-    srand(time(NULL)); // Initialisation du générateur de nombres aléatoires
+    srand(time(0)); // Initialisation du générateur de nombres aléatoires
 
     for (int i = 0; i < nb_joueur; i++) {
         int placed = 0;

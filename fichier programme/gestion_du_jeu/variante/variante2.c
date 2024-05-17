@@ -1,5 +1,3 @@
-
-
 int variante2(int fishes[], int size) {
     int score = 0;
     srand(time(0));  // Initialiser le générateur de nombres aléatoires
