@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "case.h"
-#include "player.h"
+#include "../initialisation/initialiser_joueur/player.h"
 
 void deplacer_pingouin(Case** poissons, int colonne, int ligne, Player* joueurs, int nbre_joueur, int joueur_index, Case case_choisie, Pingouin pingouin_choisi, int variante) {
     int x = pingouin_choisi.x;

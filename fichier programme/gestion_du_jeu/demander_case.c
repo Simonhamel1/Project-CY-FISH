@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "case.h"
+#include "demander_case.h"
 
 Case demander_case(Case** poissons, int colonne, int ligne) {
     int x, y;

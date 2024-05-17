@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "verif.h"
-#include "player.h"
+#include "initialiser_joueur/player.h"
 
 void initialisation_Penguins(Player* joueurs, int nb_joueur, Verif grille[][10], int lignes, int colonnes, int mode) {
     srand(time(0)); // Initialisation du générateur de nombres aléatoires

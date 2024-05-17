@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-#include "gestion_du_jeu/demander_case.c"
+#include "gestion_du_jeu/demander_case.h"
 #include "gestion_du_jeu/derouler_du_jeu.c"
 #include "gestion_du_jeu/variante/demander_variante.c"
 #include "gestion_du_jeu/variante/variante1.c"
@@ -18,6 +18,7 @@
 #include "initialisation/debut_du_jeu.c"
 #include "initialisation/initialiser_pingouin.c"
 #include "initialisation/initialiser_poissons.c"
+#include "initialisation/placement.h"
 
 int main() {
     system("chcp 65001");  // Configure l'encodage en UTF-8 sur la console Windows
@@ -54,15 +55,16 @@ int main() {
     }
 
     // Choix de la variante du jeu
-    int variante = choisir_variante();
+    int mode = choisir_variante();
 
     // Initialisation du plateau de poissons
     initialiser_poissons(ligne, colonne, poissons, nbre_joueur);
 
     // Initialisation des pingouins
+
     Placement tab[6][6]; // Tableau de placements de pingouins
     Verif grille[10][10]; // Grille de vérification pour les pingouins
-    initialisation_Penguins(tab, grille, ligne, colonne, nbre_joueur);
+    initialisation_Penguins(tab, grille, ligne, colonne, nbre_joueur, mode);
 
     // Affichage du support de jeu en fonction du nombre de colonnes
     if ((colonne % 2) == 0) {
@@ -71,7 +73,7 @@ int main() {
         afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur ,joueurs);
     }
     //derouler du jeu
-    derouler_du_jeu(poissons, colonne, ligne, joueurs, nbre_joueur, variante);
+    derouler_du_jeu(poissons, colonne, ligne, joueurs, nbre_joueur, mode);
 
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {
