@@ -2,8 +2,14 @@
 #define PLAYER_H
 
 typedef struct {
-    char name[50];
+    int x, y;
+} Pingouin;
+
+typedef struct {
+    char nom[50];
+    int nombre_pingouins;
+    Pingouin pingouins[4];  // tableau de pingouins, ajuster selon le nombre maximum de pingouins par joueur
     int score;
 } Player;
 
-#endif
+#endif // PLAYER_H

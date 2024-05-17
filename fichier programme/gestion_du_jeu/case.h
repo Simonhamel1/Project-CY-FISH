@@ -2,8 +2,8 @@
 #define CASE_H
 
 typedef struct {
-    int x;
-    int y;
+    int poissons;
+    int occupee;
 } Case;
 
-#endif
+#endif // CASE_H

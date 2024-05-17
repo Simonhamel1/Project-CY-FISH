@@ -5,20 +5,20 @@
 
 // Prototype de la fonction pour choisir la variante
 int choisir_variante() {
-    int variant;
+    int variante;
     printf("Choisissez une variante pour le jeu:\n");
     printf("1: Normal (Chaque poisson vaut 1 point)\n");
     printf("2: Rotten (Poissons peuvent être avariés, valant -1 point)\n");
     printf("3: Golden (Poissons valent 1, 2 ou 3 points)\n");
-    scanf("%d", &variant);
+    scanf("%d", &variante);
 
-    while (variant < FISH_NORMAL || variant > FISH_GOLDEN) {
+    while (variante < FISH_NORMAL || variante > FISH_GOLDEN) {
         printf("Choix invalide. Veuillez choisir une variante valide:\n");
         printf("1: Normal\n");
         printf("2: Rotten\n");
         printf("3: Golden\n");
-        scanf("%d", &variant);
+        scanf("%d", &variante);
     }
 
-    return variant;
+    return variante;
 }

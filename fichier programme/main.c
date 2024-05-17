@@ -4,7 +4,8 @@
 #include <time.h>
 
 #include "gestion_du_jeu/demander_case.c"
-#include "gestion_du_jeu/demander_variante.c"
+#include "gestion_du_jeu/derouler_du_jeu.c"
+#include "gestion_du_jeu/variante/demander_variante.c"
 #include "gestion_du_jeu/variante/variante1.c"
 #include "gestion_du_jeu/variante/variante2.c"
 #include "gestion_du_jeu/variante/variante3.c"
@@ -58,15 +59,19 @@ int main() {
     // Initialisation du plateau de poissons
     initialiser_poissons(ligne, colonne, poissons, nbre_joueur);
 
+    // Initialisation des pingouins
+    Placement tab[6][6]; // Tableau de placements de pingouins
+    Verif grille[10][10]; // Grille de vérification pour les pingouins
+    initialisation_Penguins(tab, grille, ligne, colonne, nbre_joueur);
+
     // Affichage du support de jeu en fonction du nombre de colonnes
     if ((colonne % 2) == 0) {
         afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
     } else {
         afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur ,joueurs);
     }
-
-    //essai d eajouter des score a un joueurs
-    ajouter_points(poissons, colonne, ligne, joueurs, nbre_joueur, 1);
+    //derouler du jeu
+    derouler_du_jeu(poissons, colonne, ligne, joueurs, nbre_joueur, variante);
 
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {

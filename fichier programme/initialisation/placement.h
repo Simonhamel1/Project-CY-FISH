@@ -1,4 +1,8 @@
+#ifndef PLACEMENT_H
+#define PLACEMENT_H
+
 typedef struct {
-    int x;
-    int y;
+    int x, y;
 } Placement;
+
+#endif // PLACEMENT_H
