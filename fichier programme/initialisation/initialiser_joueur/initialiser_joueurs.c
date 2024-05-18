@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include "../../gestion_du_jeu/afficher_joueur.c"
 void initialiser_joueurs(int nbre_joueur, Joueur joueurs[6]) {
 
         for (int i = 0; i < nbre_joueur; i++) {
@@ -9,8 +9,5 @@ void initialiser_joueurs(int nbre_joueur, Joueur joueurs[6]) {
             joueurs[i].score = 0; // Initialize the score to 0
         }
 
-        printf("Les joueurs sont :\n");
-        for (int i = 0; i < nbre_joueur; i++) {
-            printf("le numero du joueur est %d son nom est %s et son Score est de %d\n",joueurs[i].numero, joueurs[i].nom, joueurs[i].score);
-        }
+        afficher_joueur(nbre_joueur , joueurs);
 }

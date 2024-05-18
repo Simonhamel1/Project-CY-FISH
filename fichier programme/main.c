@@ -17,7 +17,6 @@
 #include "initialisation/initialiser_pingouin.c"
 #include "initialisation/initialiser_poissons.c"
 #include "initialisation/placement.h"
-
 #include "demander_case.c"
 
 int main() {
@@ -26,15 +25,13 @@ int main() {
     // Initialisation des joueurs
     int nbre_joueur;
     printf("vous êtes combien de joueurs ? ");
-    scanf("%d",&nbre_joueur);
-    while (nbre_joueur>6 || nbre_joueur<0)
-    {
+    scanf("%d", &nbre_joueur);
+    while (nbre_joueur > 6 || nbre_joueur < 0) {
         printf("redonner le nombre de joueurs : ");
-        scanf("%d",&nbre_joueur);
+        scanf("%d", &nbre_joueur);
     }
-    
-    Joueur joueurs[6]; // Suppose qu'il peut y avoir jusqu'à 6 joueurs
 
+    Joueur joueurs[6]; // Suppose qu'il peut y avoir jusqu'à 6 joueurs
     initialiser_joueurs(nbre_joueur, joueurs);
 
     // Initialisation du plateau
@@ -51,11 +48,11 @@ int main() {
         printf("Veuillez entrer un nombre de colonnes valide (entre 9 et 26) : ");
         scanf("%d", &colonne);
     }
-    
+
     // Allocation dynamique de mémoire pour le tableau de poissons
-    int **poissons = (int **) malloc(ligne * sizeof(int *));
+    int **poissons = (int **)malloc(ligne * sizeof(int *));
     for (int i = 0; i < ligne; i++) {
-        poissons[i] = (int *) malloc(colonne * sizeof(int));
+        poissons[i] = (int *)malloc(colonne * sizeof(int));
         if (poissons[i] == NULL) {
             fprintf(stderr, "Erreur d'allocation de mémoire.\n");
             return 1;
@@ -69,19 +66,18 @@ int main() {
     initialiser_poissons(ligne, colonne, poissons);
 
     // Initialisation des pingouins
-
-    Placement tab[6][6]; // Tableau de placements de pingouins
     initialisation_Pingouin(joueurs, nbre_joueur, ligne, colonne, poissons);
 
     // Affichage du support de jeu en fonction du nombre de colonnes
     if ((colonne % 2) == 0) {
         afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
     } else {
-        afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur ,joueurs);
+        afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur, joueurs);
     }
-    //derouler du jeu
-    //derouler_du_jeu(poissons, colonne, ligne, joueurs, nbre_joueur, mode);
-    demander_case(poissons);
+
+    // Dérouler le jeu
+    derouler_jeu(ligne, colonne, poissons, nbre_joueur, joueurs);
+
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {
         free(poissons[i]);
