@@ -4,6 +4,11 @@
 #include <stdbool.h>
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
+
 bool mouvement_valide(int x, int y, int nouvelle_x, int nouvelle_y, int ligne, int colonne, int **poissons) {
     if (nouvelle_x < 0 || nouvelle_x >= ligne || nouvelle_y < 0 || nouvelle_y >= colonne || poissons[nouvelle_x][nouvelle_y] == 0) {
         return false;
@@ -47,15 +52,26 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
             if (joueur_peut_bouger(joueurs[i], ligne, colonne, poissons)) {
                 jeu_termine = false;
                 printf("Tour de %s\n", joueurs[i].nom);
-                int pingouin_id, nouvelle_x, nouvelle_y;
-                printf("Choisissez le pingouin à déplacer (0 à %d) : ", joueurs[i].nombre_pingouins - 1);
-                scanf("%d", &pingouin_id);
-                printf("Entrez les nouvelles coordonnées (x y) : ");
-                scanf("%d %d", &nouvelle_x, &nouvelle_y);
-                while (!mouvement_valide(joueurs[i].pingouins[pingouin_id].x, joueurs[i].pingouins[pingouin_id].y, nouvelle_x, nouvelle_y, ligne, colonne, poissons)) {
-                    printf("Déplacement invalide. Entrez de nouvelles coordonnées (x y) : ");
-                    scanf("%d %d", &nouvelle_x, &nouvelle_y);
+                
+                int pingouin_id = -1, nouvelle_x = -1, nouvelle_y = -1;
+                while (pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins) {
+                    printf("Choisissez le pingouin à déplacer (0 à %d) : ", joueurs[i].nombre_pingouins - 1);
+                    if (scanf("%d", &pingouin_id) != 1) {
+                        while (getchar() != '\n'); // Clear input buffer
+                        pingouin_id = -1;
+                        printf("Entrée invalide. ");
+                    }
                 }
+                while (true) {
+                    printf("Entrez les nouvelles coordonnées (x y) : ");
+                    if (scanf("%d %d", &nouvelle_x, &nouvelle_y) == 2 && mouvement_valide(joueurs[i].pingouins[pingouin_id].x, joueurs[i].pingouins[pingouin_id].y, nouvelle_x, nouvelle_y, ligne, colonne, poissons)) {
+                        break;
+                    } else {
+                        while (getchar() != '\n'); // Clear input buffer
+                        printf("Déplacement invalide. ");
+                    }
+                }
+
                 int x = joueurs[i].pingouins[pingouin_id].x;
                 int y = joueurs[i].pingouins[pingouin_id].y;
                 joueurs[i].pingouins[pingouin_id].x = nouvelle_x;
@@ -81,9 +97,17 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
         }
     }
     printf("Le gagnant est %s avec %d points!\n", joueurs[gagnant].nom, joueurs[gagnant].score);
-    printf("Voulez-vous recommencer une partie? (0 -> oui, 1 -> non) : ");
-    int recommencer;
-    scanf("%d", &recommencer);
+
+    int recommencer = -1;
+    while (recommencer < 0 || recommencer > 1) {
+        printf("Voulez-vous recommencer une partie? (0 -> oui, 1 -> non) : ");
+        if (scanf("%d", &recommencer) != 1) {
+            while (getchar() != '\n'); // Clear input buffer
+            recommencer = -1;
+            printf("Entrée invalide. ");
+        }
+    }
+
     if (recommencer == 0) {
         for (int i = 0; i < ligne; i++) {
             for (int j = 0; j < colonne; j++) {

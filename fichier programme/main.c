@@ -24,7 +24,7 @@ int main() {
 
     // Initialisation des joueurs
     int nbre_joueur;
-    printf("vous êtes combien de joueurs ? ");
+    printf("vous êtes combien de joueurs? ");
     scanf("%d", &nbre_joueur);
     while (nbre_joueur > 6 || nbre_joueur < 0) {
         printf("redonner le nombre de joueurs : ");
@@ -36,19 +36,21 @@ int main() {
 
     // Initialisation du plateau
     int ligne, colonne;
-    printf("Combien de lignes souhaitez-vous ? ");
+    printf("Combien de lignes souhaitez-vous? ");
     scanf("%d", &ligne);
     while (ligne < 9) {
         printf("Veuillez entrer un nombre de lignes valide (au moins 9) : ");
         scanf("%d", &ligne);
     }
-    printf("Combien de colonnes souhaitez-vous ? ");
+    printf("Combien de colonnes souhaitez-vous? ");
     scanf("%d", &colonne);
     while (colonne < 9 || colonne > 26) {
         printf("Veuillez entrer un nombre de colonnes valide (entre 9 et 26) : ");
         scanf("%d", &colonne);
     }
-
+    // a enlever c'est pour gagner du temps sinon c'est trop long 
+    colonne = 5;
+    ligne = 5;
     // Allocation dynamique de mémoire pour le tableau de poissons
     int **poissons = (int **)malloc(ligne * sizeof(int *));
     for (int i = 0; i < ligne; i++) {
