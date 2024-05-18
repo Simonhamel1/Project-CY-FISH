@@ -19,7 +19,7 @@ void definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) {
             break;
         } else {
             printf("Le nombre de joueurs doit être entre 2 et 4.\n");
-            scanf("%d", nb_joueur);
+            scanf("%d", &nb_joueur);
         }
     }
 
