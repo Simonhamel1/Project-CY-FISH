@@ -6,6 +6,7 @@ typedef struct {
 } Pingouin;
 
 typedef struct {
+    int numero;
     char nom[50];
     int nombre_pingouins;
     Pingouin *pingouins;  // tableau de pingouins, ajuster selon le nombre maximum de pingouins par joueur
