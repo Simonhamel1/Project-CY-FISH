@@ -27,7 +27,7 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int
                 }
                 if (poissons[i - 1][j + 1] == 0 || poissons[i-1][j+1]== 1 || j == colonne-1)  {
                     printf(" /    \\     ");
-                } else if (joueur_id != -1 && poissons[i-1][j+1]==4) {
+                } else if (joueur_id != -1) {
                     printf(" /    \\ \U0001F427J%d", joueur_id);
                 } else if (poissons[i - 1][j + 1] == 3) {
                     printf(" /    \\ \U0001F41F\U0001F41F");
