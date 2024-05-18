@@ -18,8 +18,8 @@ void definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) {
             pingouins_par_joueur = 2;
             break;
         } else {
-            printf("Le nombre de joueurs doit être entre 2 et 4.\n");
-            scanf("%d", nb_joueur);
+            pingouins_par_joueur = 1;
+            break;
         }
     }
 
@@ -57,7 +57,7 @@ void initialisation_Pingouin(Joueur* joueurs, int nb_joueur, int lignes, int col
                 do {
                     x = rand() % lignes;
                     y = rand() % colonnes;
-                } while (poissons[x][y] != 1);
+                } while (poissons[x][y] != 1 ||(lignes==lignes-1 && colonnes%2==1));
             }
             joueurs[i].pingouins[j].x = x;
             joueurs[i].pingouins[j].y = y;
