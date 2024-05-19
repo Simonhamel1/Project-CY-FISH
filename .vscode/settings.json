@@ -2,6 +2,8 @@
     "files.associations": {
         "player.h": "c",
         "case.h": "c",
-        "derouler_du_jeu.C": "cpp"
+        "derouler_du_jeu.C": "cpp",
+        "mouvement.h": "c",
+        "placement.h": "c"
     }
 }

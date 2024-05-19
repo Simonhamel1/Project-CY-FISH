@@ -1,19 +1,42 @@
-#include "case.h"
-#include "../initialisation/initialiser_joueur/player.h"
+#include "ajouter_points.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-void ajouter_points(int** poissons, int colonne, int ligne, Joueur* joueurs, int nbre_joueur, int joueur_actuel) {
-    if (joueur_actuel < 0 || joueur_actuel >= nbre_joueur) {
-        printf("Index du joueur actuel invalide.\n");
-        return;
-    }
-    int x,y;
-    // Validation des indices x et y
-    if (x < 0 || x >= colonne || y < 0 || y >= ligne) {
-        printf("Indices de case hors limites.\n");
-        return;
-    }
+// Ajoute les points au joueur en fonction de la variante choisie
+#define FISH_NORMAL 1
+#define FISH_ROTTEN 2
+#define FISH_GOLDEN 3
 
+void ajouter_points(int **poissons, int x, int y, Joueur *joueur, int variante) {
+    int points = 0;
     int nbre_poisson = poissons[x][y];
-    joueurs[joueur_actuel].score += nbre_poisson;
-    printf("Le joueur %d a maintenant %d points.\n", joueur_actuel, joueurs[joueur_actuel].score);
+
+    switch (variante) {
+        case FISH_NORMAL:
+            points = nbre_poisson;
+            break;
+
+        case FISH_ROTTEN:
+            if (nbre_poisson > 1 && (rand() % 2 == 0)) { // Ajouter de l'aléatoire pour les poissons avariés
+                points = nbre_poisson - 1;
+                printf("Le joueur %s a trouvé un poisson avarié!\n", joueur->nom);
+            } else {
+                points = nbre_poisson;
+            }
+            break;
+
+        case FISH_GOLDEN:
+            if (nbre_poisson == 1) {
+                points = (rand() % 3) + 1; // Poisson seul peut valoir 1, 2 ou 3 points
+            } else {
+                points = nbre_poisson; // Si plusieurs poissons, ils valent 1 point chacun
+            }
+            break;
+
+        default:
+            printf("Variante non reconnue.\n");
+            return;
+    }
+
+    joueur->score += points;
 }

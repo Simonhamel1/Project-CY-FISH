@@ -1,4 +1,5 @@
 // Définition des constantes pour les variantes
+
 #define FISH_NORMAL 1
 #define FISH_ROTTEN 2
 #define FISH_GOLDEN 3
@@ -12,7 +13,7 @@ int choisir_variante() {
     printf("3: Golden (Poissons valent 1, 2 ou 3 points)\n");
     scanf("%d", &variante);
 
-    while (variante < FISH_NORMAL || variante > FISH_GOLDEN) {
+    while (variante < 1 || variante > 3) {
         printf("Choix invalide. Veuillez choisir une variante valide:\n");
         printf("1: Normal\n");
         printf("2: Rotten\n");

@@ -17,8 +17,12 @@ void definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) {
         } else if (nb_joueur == 4) {
             pingouins_par_joueur = 2;
             break;
+        } else if (nb_joueur == 5 || nb_joueur ==6) {
+            pingouins_par_joueur = 1;
+            break;
         } else {
-            printf("Le nombre de joueurs doit être entre 2 et 4.\n");
+            printf("Le nombre de joueurs doit être entre 2 et 6.\n");
+            printf ("redonner le nombre de joueur : ");
             scanf("%d", &nb_joueur);
         }
     }
@@ -50,7 +54,7 @@ void initialisation_Pingouin(Joueur* joueurs, int nb_joueur, int lignes, int col
                 printf("Entrez les coordonnées pour le pingouin %d de %s (x y) : ", j + 1, joueurs[i].nom);
                 scanf("%d %d", &x, &y);
                 while (x < 0 || x >= lignes || y < 0 || y >= colonnes || poissons[x][y] != 1) {
-                    printf("Case invalide. Entrez de nouvelles coordonnées pour le pingouin %d de %s (x y) : ", j + 1, joueurs[i].nom);
+                    printf("Case non possible. Entrez de nouvelles coordonnées pour le pingouin %d de %s (x y) : ", j + 1, joueurs[i].nom);
                     scanf("%d %d", &x, &y);
                 }
             } else if (choix == 0) { // Mode automatique

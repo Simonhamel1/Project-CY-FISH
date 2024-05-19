@@ -4,12 +4,12 @@
 #include <time.h>
 
 #include "gestion_du_jeu/derouler_du_jeux.c"
-#include "gestion_du_jeu/variante/demander_variante.c"
-#include "gestion_du_jeu/variante/variante1.c"
-#include "gestion_du_jeu/variante/variante2.c"
-#include "gestion_du_jeu/variante/variante3.c"
+#include "gestion_du_jeu/demander_variante.c"
 #include "gestion_du_jeu/ajouter_points.c"
 #include "gestion_du_jeu/case.h"
+#include "gestion_du_jeu/mouvement.h"
+#include "gestion_du_jeu/mouvement.c"
+#include "gestion_du_jeu/derouler_du_jeu_automatique.c"
 #include "initialisation/initialiser_joueur/player.h"
 #include "afficher_support_de_jeux_pair.c"
 #include "afficher_support_de_jeux_impair.c"
@@ -18,6 +18,7 @@
 #include "initialisation/initialiser_poissons.c"
 #include "initialisation/placement.h"
 #include "demander_case.c"
+
 
 int main() {
     system("chcp 65001");  // Configure l'encodage en UTF-8 sur la console Windows
@@ -50,7 +51,8 @@ int main() {
     }
     // a enlever c'est pour gagner du temps sinon c'est trop long 
     //colonne = 5;
-    //ligne = 5;
+    //  ligne = 5;
+
     // Allocation dynamique de mémoire pour le tableau de poissons
     int **poissons = (int **)malloc(ligne * sizeof(int *));
     for (int i = 0; i < ligne; i++) {
@@ -78,8 +80,8 @@ int main() {
     }
 
     // Dérouler le jeu
-    derouler_jeu(ligne, colonne, poissons, nbre_joueur, joueurs);
-
+    //derouler_jeu(ligne, colonne, poissons, nbre_joueur, joueurs, mode);
+    derouler_jeu_automatique(ligne, colonne, poissons, nbre_joueur, joueurs, mode);
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {
         free(poissons[i]);

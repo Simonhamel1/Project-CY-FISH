@@ -11,8 +11,7 @@
 #define FISH_NORMAL 1
 #define FISH_ROTTEN 2
 #define FISH_GOLDEN 3
-
-void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6], int variante) {
+void derouler_jeu_automatique(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6], int variante) {
     bool jeu_termine = false;
     while (!jeu_termine) {
         jeu_termine = true;
@@ -23,33 +22,43 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                 
                 int pingouin_id = rand() % joueurs[i].nombre_pingouins; // Sélection aléatoire du pingouin
                 int nouvelle_x, nouvelle_y;
+                int direction = 0;
+                bool move_found = false;
 
-                do {
-                    int direction = rand() % 4; // 0: gauche, 1: droite, 2: haut, 3: bas
+                for (direction = 0; direction < 6; direction++) {
                     int dx = 0, dy = 0;
                     switch (direction) {
-                        case 0: dy = -1; break; // gauche
-                        case 1: dy = 1; break; // droite
-                        case 2: dx = -1; break; // haut
-                        case 3: dx = 1; break; // bas
+                        case 0: dx = -1; break; // gauche
+                        case 1: dx = 1; break; // droite
+                        case 2: dy = -1; break; // haut
+                        case 3: dy = 1; break; // bas
+                        case 4: dx = -1; dy = 1; break; // haut-gauche
+                        case 5: dx = 1; dy = -1; break; // bas-droite
                     }
                     nouvelle_x = joueurs[i].pingouins[pingouin_id].x + dx;
                     nouvelle_y = joueurs[i].pingouins[pingouin_id].y + dy;
-                } while (!mouvement_valide(joueurs[i].pingouins[pingouin_id].x, joueurs[i].pingouins[pingouin_id].y, nouvelle_x, nouvelle_y, ligne, colonne, poissons));
 
-                int x = joueurs[i].pingouins[pingouin_id].x;
-                int y = joueurs[i].pingouins[pingouin_id].y;
-                joueurs[i].pingouins[pingouin_id].x = nouvelle_x;
-                joueurs[i].pingouins[pingouin_id].y = nouvelle_y;
-                
-                ajouter_points(poissons, x, y, &joueurs[i], variante);
+                    if (mouvement_valide(joueurs[i].pingouins[pingouin_id].x, joueurs[i].pingouins[pingouin_id].y, nouvelle_x, nouvelle_y, ligne, colonne, poissons)) {
+                        move_found = true;
+                        break;
+                    }
+                }
 
-                poissons[x][y] = 0;
-                poissons[nouvelle_x][nouvelle_y] = 4;
-                if ((colonne % 2) == 0) {
-                    afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
-                } else {
-                    afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur, joueurs);
+                if (move_found) {
+                    int x = joueurs[i].pingouins[pingouin_id].x;
+                    int y = joueurs[i].pingouins[pingouin_id].y;
+                    joueurs[i].pingouins[pingouin_id].x = nouvelle_x;
+                    joueurs[i].pingouins[pingouin_id].y = nouvelle_y;
+                    
+                    ajouter_points(poissons, x, y, &joueurs[i], variante);
+
+                    poissons[x][y] = 0;
+                    poissons[nouvelle_x][nouvelle_y] = 4;
+                    if ((colonne % 2) == 0) {
+                        afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
+                    } else {
+                        afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur, joueurs);
+                    }
                 }
             }
         }
