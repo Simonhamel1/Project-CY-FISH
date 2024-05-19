@@ -49,8 +49,8 @@ int main() {
         scanf("%d", &colonne);
     }
     // a enlever c'est pour gagner du temps sinon c'est trop long 
-    colonne = 5;
-    ligne = 5;
+    //colonne = 5;
+    //ligne = 5;
     // Allocation dynamique de mémoire pour le tableau de poissons
     int **poissons = (int **)malloc(ligne * sizeof(int *));
     for (int i = 0; i < ligne; i++) {
