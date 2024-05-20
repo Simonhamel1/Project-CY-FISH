@@ -22,10 +22,9 @@ void derouler_jeu_automatique(int ligne, int colonne, int **poissons, int nbre_j
                 
                 int pingouin_id = rand() % joueurs[i].nombre_pingouins; // Sélection aléatoire du pingouin
                 int nouvelle_x, nouvelle_y;
-                int direction = 0;
                 bool move_found = false;
 
-                for (direction = 0; direction < 6; direction++) {
+                for (int direction = 0; direction < 6; direction++) {
                     int dx = 0, dy = 0;
                     switch (direction) {
                         case 0: dx = -1; break; // gauche
@@ -73,28 +72,4 @@ void derouler_jeu_automatique(int ligne, int colonne, int **poissons, int nbre_j
         }
     }
     printf("Le gagnant est %s avec %d points!\n", joueurs[gagnant].nom, joueurs[gagnant].score);
-
-    int recommencer = -1;
-    while (recommencer < 0 || recommencer > 1) {
-        printf("Voulez-vous recommencer une partie? (0 -> oui, 1 -> non) : ");
-        if (scanf("%d", &recommencer) != 1) {
-            while (getchar() != '\n'); // Clear input buffer
-            recommencer = -1;
-            printf("Entrée invalide. ");
-        }
-    }
-
-    if (recommencer == 0) {
-        for (int i = 0; i < ligne; i++) {
-            for (int j = 0; j < colonne; j++) {
-                poissons[i][j] = (rand() % 3) + 1;
-            }
-        }
-        for (int i = 0; i < nbre_joueur; i++) {
-            joueurs[i].score = 0;
-        }
-        derouler_jeu(ligne, colonne, poissons, nbre_joueur, joueurs, variante);
-    } else {
-        printf("Merci d'avoir joué!\n");
-    }
 }

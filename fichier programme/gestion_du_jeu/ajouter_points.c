@@ -13,7 +13,7 @@ void ajouter_points(int **poissons, int x, int y, Joueur *joueur, int variante) 
 
     switch (variante) {
         case FISH_NORMAL:
-            points = nbre_poisson;
+            points = nbre_poisson; // Chaque poisson vaut 1 point
             break;
 
         case FISH_ROTTEN:
@@ -26,11 +26,9 @@ void ajouter_points(int **poissons, int x, int y, Joueur *joueur, int variante) 
             break;
 
         case FISH_GOLDEN:
-            if (nbre_poisson == 1) {
-                points = (rand() % 3) + 1; // Poisson seul peut valoir 1, 2 ou 3 points
-            } else {
-                points = nbre_poisson; // Si plusieurs poissons, ils valent 1 point chacun
-            }
+        for (int i = 0; i<nbre_poisson ;i++){
+                points += (rand() % 3) + 1; // Poisson seul peut valoir 1, 2 ou 3 points
+        }
             break;
 
         default:

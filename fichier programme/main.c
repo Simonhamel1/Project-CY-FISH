@@ -9,6 +9,7 @@
 #include "gestion_du_jeu/case.h"
 #include "gestion_du_jeu/mouvement.h"
 #include "gestion_du_jeu/mouvement.c"
+#include "gestion_du_jeu/afficher_pingouin.c"
 #include "gestion_du_jeu/derouler_du_jeu_automatique.c"
 #include "initialisation/initialiser_joueur/player.h"
 #include "afficher_support_de_jeux_pair.c"
@@ -45,10 +46,10 @@ int main() {
     }
     printf("Combien de colonnes souhaitez-vous? ");
     scanf("%d", &colonne);
-    while (colonne < 9 || colonne > 26) {
-        printf("Veuillez entrer un nombre de colonnes valide (entre 9 et 26) : ");
-        scanf("%d", &colonne);
-    }
+    //while (colonne < 9 || colonne > 26) {
+    //    printf("Veuillez entrer un nombre de colonnes valide (entre 9 et 26) : ");
+    //    scanf("%d", &colonne);
+    //}
     // a enlever c'est pour gagner du temps sinon c'est trop long 
     //colonne = 5;
     //  ligne = 5;
@@ -80,8 +81,8 @@ int main() {
     }
 
     // Dérouler le jeu
-    //derouler_jeu(ligne, colonne, poissons, nbre_joueur, joueurs, mode);
-    derouler_jeu_automatique(ligne, colonne, poissons, nbre_joueur, joueurs, mode);
+    derouler_jeu(ligne, colonne, poissons, nbre_joueur, joueurs, mode );
+    //derouler_jeu_automatique(ligne, colonne, poissons, nbre_joueur, joueurs, mode);
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {
         free(poissons[i]);
