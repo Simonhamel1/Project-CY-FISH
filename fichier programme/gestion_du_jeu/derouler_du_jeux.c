@@ -1,3 +1,4 @@
+
 #include "../afficher_support_de_jeux_pair.h"
 #include "../afficher_support_de_jeux_impair.h"
 #include "afficher_joueur.h"
@@ -12,9 +13,7 @@
 #define FISH_ROTTEN 2
 #define FISH_GOLDEN 3
 
-
-void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6],int variante) {
-
+void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6], int variante) {
     bool jeu_termine = false;
 
     while (!jeu_termine) {
@@ -23,7 +22,7 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
             if (joueur_peut_bouger(joueurs[i], ligne, colonne, poissons)) {
                 jeu_termine = false;
                 printf("Tour de %s\n", joueurs[i].nom);
-                
+
                 int pingouin_id = -1;
                 while (pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins) {
                     printf("Choisissez le pingouin à déplacer (0 à %d) : ", joueurs[i].nombre_pingouins - 1);
@@ -34,47 +33,52 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                     }
                 }
 
-                int direction = -1;
-                while (direction < 0 || direction > 5) {
-                    printf("Choisissez la direction (0: gauche, 1: droite, 2: haut, 3: bas, 4: haut-gauche, 5: bas-droite) : ");
-                    if (scanf("%d", &direction) != 1) {
-                        while (getchar() != '\n'); // Clear input buffer
-                        direction = -1;
-                        printf("Entrée invalide. ");
+                bool mouvement_valide_flag = false;
+                while (!mouvement_valide_flag) {
+                    int direction = -1;
+                    while (direction < 0 || direction > 5) {
+                        printf("Choisissez la direction (0: haut, 1: bas, 2: haut gauche, 3: bas-droite, 4: haut-droite, 5: bas-gauche) : ");
+                        if (scanf("%d", &direction) != 1 || direction < 0 || direction > 5) {
+                            while (getchar() != '\n'); // Clear input buffer
+                            direction = -1;
+                            printf("Entrée invalide. ");
+                        }
                     }
-                }
 
-                int dx = 0, dy = 0;
+                     int dx = 0, dy = 0;
                 switch (direction) {
-                    case 0: dx = -1; break; // gauche
-                    case 1: dx = 1; break; // droite
-                    case 2: dy = -1; break; // haut
-                    case 3: dy = 1; break; // bas
-                    case 4: dx = -1; dy = 1; break; // haut-gauche
-                    case 5: dx = 1; dy = -1; break; // bas-droite
+                    case 0: dx = -1; break; // haut
+                    case 1: dx = 1; break; // bas
+                    case 2: if (joueurs[i].pingouins[pingouin_id].x %2 == 0) {dy = -1; dx=-1 ;break; } else {dy = -1 ; break; } // haut-gauche
+                    case 3: if (joueurs[i].pingouins[pingouin_id].x %2 == 0) {dy = 1; break; } else {dy = 1; dx=1; break; } // bas-droite
+                    case 4: if (joueurs[i].pingouins[pingouin_id].x %2 == 0) {dy = 1; dx=-1; break; } else {dy = 1; break; } // haut-droite
+                    case 5: if (joueurs[i].pingouins[pingouin_id].x %2 == 0) {dy = -1; break; } else {dy = -1; dx=-1; break; } // bas-gauche
                 }
 
-                int nouvelle_x = joueurs[i].pingouins[pingouin_id].x + dx;
-                int nouvelle_y = joueurs[i].pingouins[pingouin_id].y + dy;
+                    int nouvelle_x = joueurs[i].pingouins[pingouin_id].x + dx;
+                    int nouvelle_y = joueurs[i].pingouins[pingouin_id].y + dy;
 
-                if (mouvement_valide(joueurs[i].pingouins[pingouin_id].x, joueurs[i].pingouins[pingouin_id].y, nouvelle_x, nouvelle_y, ligne, colonne, poissons)) {
-                    int x = joueurs[i].pingouins[pingouin_id].x;
-                    int y = joueurs[i].pingouins[pingouin_id].y;
-                    joueurs[i].pingouins[pingouin_id].x = nouvelle_x;
-                    joueurs[i].pingouins[pingouin_id].y = nouvelle_y;
+                    if (mouvement_valide(joueurs[i].pingouins[pingouin_id].x, joueurs[i].pingouins[pingouin_id].y, nouvelle_x, nouvelle_y, ligne, colonne, poissons)) {
+                        int x = joueurs[i].pingouins[pingouin_id].x;
+                        int y = joueurs[i].pingouins[pingouin_id].y;
+                        joueurs[i].pingouins[pingouin_id].x = nouvelle_x;
+                        joueurs[i].pingouins[pingouin_id].y = nouvelle_y;
 
-                    ajouter_points(poissons, x, y, &joueurs[i], variante);
+                        ajouter_points(poissons, x, y, &joueurs[i], variante);
 
-                    poissons[x][y] = 0;
-                    poissons[nouvelle_x][nouvelle_y] = 4;
+                        poissons[x][y] = 0;
+                        poissons[nouvelle_x][nouvelle_y] = 4;
 
-                    if ((colonne % 2) == 0) {
-                        afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
+                        if ((colonne % 2) == 0) {
+                            afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
+                        } else {
+                            afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur, joueurs);
+                        }
+
+                        mouvement_valide_flag = true; // Le mouvement est valide, on sort de la boucle
                     } else {
-                        afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur, joueurs);
+                        printf("Mouvement invalide. Veuillez réessayer.\n");
                     }
-                } else {
-                    printf("Mouvement invalide. Veuillez réessayer.\n");
                 }
             }
         }
@@ -90,5 +94,5 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
     }
     printf("Le gagnant est %s avec %d points!\n", joueurs[gagnant].nom, joueurs[gagnant].score);
 
-        printf("Merci d'avoir joué!\n");
+    printf("Merci d'avoir joué!\n");
 }

@@ -6,7 +6,7 @@
 // Fonction pour vérifier si le mouvement est valide
 bool mouvement_valide(int x, int y, int nouvelle_x, int nouvelle_y, int ligne, int colonne, int **poissons) {
     // Vérification des limites du plateau et des cases interdites
-    if (nouvelle_x < 0 || nouvelle_x >= ligne || nouvelle_y < 0 || nouvelle_y >= colonne || poissons[nouvelle_x][nouvelle_y] == 0 || poissons[nouvelle_x][nouvelle_y] == 4) {
+    if (nouvelle_x < 0 || nouvelle_x >= ligne || nouvelle_y < 0 || nouvelle_y >= colonne || poissons[nouvelle_x][nouvelle_y] == 0 || poissons[nouvelle_x][nouvelle_y] == 4 || (nouvelle_x==ligne-1 && nouvelle_y%2==1)) {
         return false;
     }
 

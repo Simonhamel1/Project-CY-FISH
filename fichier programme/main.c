@@ -28,7 +28,7 @@ int main() {
     int nbre_joueur;
     printf("vous êtes combien de joueurs? ");
     scanf("%d", &nbre_joueur);
-    while (nbre_joueur > 6 || nbre_joueur < 0) {
+    while (nbre_joueur > 6 || nbre_joueur < 2) {
         printf("redonner le nombre de joueurs : ");
         scanf("%d", &nbre_joueur);
     }
