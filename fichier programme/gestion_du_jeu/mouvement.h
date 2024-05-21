@@ -5,5 +5,6 @@
 
 bool mouvement_valide(int x, int y, int nouvelle_x, int nouvelle_y, int ligne, int colonne, int **poissons);
 bool joueur_peut_bouger(Joueur joueur, int ligne, int colonne, int **poissons);
+bool pingouin_peut_bouger(Pingouin pingouin, int ligne, int colonne, int **poissons);
 
 #endif

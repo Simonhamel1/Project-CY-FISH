@@ -1,4 +1,3 @@
-
 #include "../afficher_support_de_jeux_pair.h"
 #include "../afficher_support_de_jeux_impair.h"
 #include "afficher_joueur.h"
@@ -19,17 +18,26 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
     while (!jeu_termine) {
         jeu_termine = true;
         for (int i = 0; i < nbre_joueur; i++) {
-            if (joueur_peut_bouger(joueurs[i], ligne, colonne, poissons)) {
+            printf("Tour de %s\n", joueurs[i].nom);
+            
+            bool pingouin_peut_se_deplacer = false;
+            for (int j = 0; j < joueurs[i].nombre_pingouins; j++) {
+                if (pingouin_peut_bouger(joueurs[i].pingouins[j], ligne, colonne, poissons)) {
+                    pingouin_peut_se_deplacer = true;
+                    break;
+                }
+            }
+            
+            if (pingouin_peut_se_deplacer== true ) {
                 jeu_termine = false;
-                printf("Tour de %s\n", joueurs[i].nom);
 
                 int pingouin_id = -1;
-                while (pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins) {
+                while (pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)==false) {
                     printf("Choisissez le pingouin à déplacer (0 à %d) : ", joueurs[i].nombre_pingouins - 1);
-                    if (scanf("%d", &pingouin_id) != 1) {
+                    if (scanf("%d", &pingouin_id) != 1 || pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || !pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)) {
                         while (getchar() != '\n'); // Clear input buffer
                         pingouin_id = -1;
-                        printf("Entrée invalide. ");
+                        printf("Entrée invalide ou pingouin ne peut pas bouger. ");
                     }
                 }
 
@@ -49,10 +57,10 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                 switch (direction) {
                     case 0: dx = -1; break; // haut
                     case 1: dx = 1; break; // bas
-                    case 2: if (joueurs[i].pingouins[pingouin_id].x %2 == 0) {dy = -1; dx=-1 ;break; } else {dy = -1 ; break; } // haut-gauche
-                    case 3: if (joueurs[i].pingouins[pingouin_id].x %2 == 0) {dy = 1; break; } else {dy = 1; dx=1; break; } // bas-droite
-                    case 4: if (joueurs[i].pingouins[pingouin_id].x %2 == 0) {dy = 1; dx=-1; break; } else {dy = 1; break; } // haut-droite
-                    case 5: if (joueurs[i].pingouins[pingouin_id].x %2 == 0) {dy = -1; break; } else {dy = -1; dx=-1; break; } // bas-gauche
+                    case 2: if (joueurs[i].pingouins[pingouin_id].y %2 == 0) {dy = -1; dx=-1 ;break; } else {dy = -1 ; break; } // haut-gauche
+                    case 3: if (joueurs[i].pingouins[pingouin_id].y %2 == 0) {dy = 1; break; } else {dy = 1; dx=1; break; } // bas-droite
+                    case 4: if (joueurs[i].pingouins[pingouin_id].y %2 == 0) {dy = 1; dx=-1; break; } else {dy = 1; break; } // haut-droite
+                    case 5: if (joueurs[i].pingouins[pingouin_id].y %2 == 0) {dy = -1; break; } else {dy = -1; dx=1; break; } // bas-gauche
                 }
 
                     int nouvelle_x = joueurs[i].pingouins[pingouin_id].x + dx;
