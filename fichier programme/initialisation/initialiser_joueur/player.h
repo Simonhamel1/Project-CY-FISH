@@ -3,6 +3,7 @@
 
 typedef struct {
     int x, y;
+    int numero_pingouin ;
 } Pingouin;
 
 typedef struct {
