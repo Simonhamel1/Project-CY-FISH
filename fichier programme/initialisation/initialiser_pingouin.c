@@ -63,7 +63,7 @@ void initialisation_Pingouin(Joueur* joueurs, int nb_joueur, int lignes, int col
                 do {
                     x = rand() % lignes;
                     y = rand() % colonnes;
-                } while (poissons[x][y] != 1);
+                } while (poissons[x][y] != 1 || (x==lignes-1 && y%2==0));
             }
             joueurs[i].pingouins[j].x = x;
             joueurs[i].pingouins[j].y = y;

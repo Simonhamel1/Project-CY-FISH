@@ -33,7 +33,7 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
 
                 int pingouin_id = -1;
                 while (pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)==false) {
-                    printf("Choisissez le pingouin à déplacer (1 à %d) : ", joueurs[i].nombre_pingouins - 1);
+                    printf("Choisissez le pingouin à déplacer (0 à %d) : ", joueurs[i].nombre_pingouins - 1);
                     if (scanf("%d", &pingouin_id) != 1 || pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || !pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)) {
                         while (getchar() != '\n'); // Clear input buffer
                         pingouin_id = -1;
@@ -72,7 +72,7 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                         joueurs[i].pingouins[pingouin_id].x = nouvelle_x;
                         joueurs[i].pingouins[pingouin_id].y = nouvelle_y;
 
-                        ajouter_points(poissons, x, y, &joueurs[i], variante);
+                        ajouter_points(poissons, nouvelle_x, nouvelle_y, &joueurs[i], variante);
 
                         poissons[x][y] = 0;
                         poissons[nouvelle_x][nouvelle_y] = 4;
