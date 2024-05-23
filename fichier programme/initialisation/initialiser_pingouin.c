@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include "initialiser_joueur/player.h"
+#include "initialiser_poissons.c"
 
 // Define the number of penguins based on the number of players
-void definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) {
+int definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) {
     int pingouins_par_joueur;
 
     while (1) {
@@ -30,12 +31,16 @@ void definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) {
             joueurs[i].pingouins[j].numero_pingouin = j + 1; // Assign a unique number to each penguin
         }
     }
+
+    return pingouins_par_joueur;
 }
 
 void initialisation_Pingouin(Joueur* joueurs, int nb_joueur, int lignes, int colonnes, int** poissons) {
     srand(time(0)); // Seed random number generator
 
-    definir_nombre_pingouins(joueurs, nb_joueur);
+    int pingouin_par_joueur = definir_nombre_pingouins(joueurs, nb_joueur);
+
+    initialiser_poissons(lignes, colonnes, poissons, pingouin_par_joueur,nb_joueur);
 
     printf("Voulez-vous initialiser les pingouins automatiquement (0 -> oui, 1 -> non) : ");
     int choix;

@@ -15,12 +15,10 @@ int choisir_variante() {
     scanf("%d", &variante);
     while ( variante < 1 || variante > 3) {
         printf("Choix invalide. Veuillez choisir une variante valide:\n");
-        printf("1: Normal\n");
-        printf("2: Rotten\n");
-        printf("3: Golden\n");
-        scanf("%d", &variante);
-        // Vider le tampon d'entrée pour éviter les problèmes de lecture ultérieure
+        scanf("%d", &variante);    
+
         while (getchar() != '\n');
     }
+    
     return variante;
 }

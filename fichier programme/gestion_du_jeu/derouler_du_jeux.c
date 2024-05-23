@@ -40,6 +40,7 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                         while (getchar() != '\n'); // Clear input buffer
                         pingouin_id = -1;
                         printf("Entrée invalide ou pingouin ne peut pas bouger. ");
+                        printf("redonner le numéro du pingouin : ");
                         scanf("%d", &pingouin_id);
                         while (getchar() != '\n'); // Clear input buffer
                     }

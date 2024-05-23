@@ -1,14 +1,16 @@
-void initialiser_poissons(int ligne, int colonne, int** poissons) {
+void initialiser_poissons(int ligne, int colonne, int** poissons, int pingouin_par_joueur , int nbre_joueur) {
     srand(time(0)); // Initialisation du générateur de nombres aléatoires
 
-    printf("voulez vous que l'initialisation des poissons soit aléatoire ou nom (0-> oui 1-> nom) : ");
+    printf("Voulez-vous initialiser les poissons automatiquement (0 -> oui, 1 -> non) : ");
     int choix;
-    scanf("%d",&choix);
-    while (choix!=0 && choix!= 1){
-        printf("redonner votre choix : ");
-        scanf("%d",&choix);
+    scanf("%d", &choix);
+    while (choix != 1 && choix != 0) {
+        printf("Redonnez votre choix : ");
+        scanf("%d", &choix);
+
         while (getchar() != '\n');
     }
+
     if (choix == 1){
         for (int i = 0 ; i< ligne ; i++){
             for (int j = 0; j < colonne  ; j++) {
@@ -28,5 +30,18 @@ void initialiser_poissons(int ligne, int colonne, int** poissons) {
                 poissons[i][j] = rand() % 3+1; // Génération d'un nombre aléatoire de poissons (0 ou 3)
             }
         }
+    }
+    int compteur ;
+    for (int i = 0 ; i< ligne ; i++){
+            for (int j = 0; j < colonne  ; j++) {
+                if (poissons[i][j]==1){
+                    compteur++;
+                }
+            }
+    }
+
+    if (compteur < nbre_joueur*pingouin_par_joueur){
+        printf("il n'y a pas assez de poissons pour tous les joueurs\n");
+        initialiser_poissons(ligne,colonne,poissons, pingouin_par_joueur , nbre_joueur);
     }
 }

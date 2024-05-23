@@ -16,7 +16,6 @@
 #include "afficher_support_de_jeux_impair.c"
 #include "initialisation/initialiser_joueur/initialiser_joueurs.c"
 #include "initialisation/initialiser_pingouin.c"
-#include "initialisation/initialiser_poissons.c"
 #include "initialisation/placement.h"
 #include "demander_case.c"
 #include "essai.h"
@@ -81,9 +80,6 @@ int main() {
 
     // Choix de la variante du jeu
     int mode = choisir_variante();
-
-    // Initialisation du plateau de poissons
-    initialiser_poissons(ligne, colonne, poissons);
 
     // Initialisation des pingouins
     initialisation_Pingouin(joueurs, nbre_joueur, ligne, colonne, poissons);

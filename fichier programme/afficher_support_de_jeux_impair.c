@@ -64,7 +64,7 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int
                 if (poissons[i][j] == 0 || (poissons[i][j] == 4 && joueur_id == -1)) {
                     printf("/      \\");
                 } else if (joueur_id != -1) {
-                    printf("/  P%d    \\", pingouin_numero-1);
+                    printf("/  P%d  \\", pingouin_numero-1);
                 } else {
                     printf("/  \U0001F41F  \\");
                 }
