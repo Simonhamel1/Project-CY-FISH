@@ -63,12 +63,12 @@ void initialisation_Pingouin(Joueur* joueurs, int nb_joueur, int lignes, int col
                 do {
                     x = rand() % lignes;
                     y = rand() % colonnes;
-                } while (poissons[x][y] != 1 || (x==lignes-1 && y%2==0));
+                } while (poissons[x][y] != 1 || (x==lignes-1 && y%2==1));
             }
             joueurs[i].pingouins[j].x = x;
             joueurs[i].pingouins[j].y = y;
             poissons[x][y] = 4; // Mark the cell as occupied
-            printf("Pingouin %d de %s placé à (%d, %d)\n", joueurs[i].pingouins[j].numero_pingouin, joueurs[i].nom, x, y);
+            printf("Pingouin %d de %s placé à (%d, %d)\n", joueurs[i].pingouins[j].numero_pingouin-1, joueurs[i].nom, x, y);
         }
     }
 }

@@ -71,7 +71,7 @@
                     printf("/");
                 }
             }
-            printf("\n");
+            printf("\n");   
 
             // Affichage de la dernière ligne du motif avec des poissons
             for (int j = 0; j < colonne; j += 2) {

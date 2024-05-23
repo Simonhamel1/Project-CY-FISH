@@ -1,6 +1,7 @@
 #include "../afficher_support_de_jeux_pair.h"
 #include "../afficher_support_de_jeux_impair.h"
 #include "afficher_joueur.h"
+#include "afficher_pingouin.h"
 #include "ajouter_points.h"
 #include "mouvement.h"
 #include <stdbool.h>
@@ -76,6 +77,8 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
 
                         poissons[x][y] = 0;
                         poissons[nouvelle_x][nouvelle_y] = 4;
+
+                        afficher_pingouin(nbre_joueur, joueurs, poissons);
 
                         if ((colonne % 2) == 0) {
                             afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
