@@ -35,10 +35,13 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                 int pingouin_id = -1;
                 while (pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)==false) {
                     printf("Choisissez le pingouin à déplacer (0 à %d) : ", joueurs[i].nombre_pingouins - 1);
-                    if (scanf("%d", &pingouin_id) != 1 || pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || !pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)) {
+                    scanf("%d", &pingouin_id);
+                    if ( pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || !pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)) {
                         while (getchar() != '\n'); // Clear input buffer
                         pingouin_id = -1;
                         printf("Entrée invalide ou pingouin ne peut pas bouger. ");
+                        scanf("%d", &pingouin_id);
+                        while (getchar() != '\n'); // Clear input buffer
                     }
                 }
 
@@ -47,10 +50,11 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                     int direction = -1;
                     while (direction < 0 || direction > 5) {
                         printf("Choisissez la direction (0: haut, 1: bas, 2: haut gauche, 3: bas-droite, 4: haut-droite, 5: bas-gauche) : ");
-                        if (scanf("%d", &direction) != 1 || direction < 0 || direction > 5) {
-                            while (getchar() != '\n'); // Clear input buffer
-                            direction = -1;
+                        scanf("%d", &direction);
+                        if ( direction < 0 || direction > 5) {
                             printf("Entrée invalide. ");
+                            scanf("%d", &direction);
+                            while (getchar() != '\n'); // Clear input buffer
                         }
                     }
 

@@ -7,6 +7,7 @@ void initialiser_poissons(int ligne, int colonne, int** poissons) {
     while (choix!=0 && choix!= 1){
         printf("redonner votre choix : ");
         scanf("%d",&choix);
+        while (getchar() != '\n');
     }
     if (choix == 1){
         for (int i = 0 ; i< ligne ; i++){
@@ -16,6 +17,7 @@ void initialiser_poissons(int ligne, int colonne, int** poissons) {
                 while (poissons[i][j]<1 || poissons[i][j]>3 ){
                     printf("redonner le nombre de poissons dans la case [%d][%d] :",i,j);
                     scanf("%d",&poissons[i][j]);
+                    while (getchar() != '\n');
                 }
             }
         }
