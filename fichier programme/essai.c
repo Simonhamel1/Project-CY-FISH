@@ -27,19 +27,19 @@ void essai(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueu
                         }
                     }
                 }
-                if (poissons[i - 1][j + 1] == 0 || poissons[i - 1][j + 1] == 1 || j == colonne - 1) {
+                if (poissons[i - 1][j + 1] == 0 || poissons[i-1][j+1]== 1 || j == colonne-1)  {
                     printf(" /    \\     ");
                 } else if (joueur_id != -1) {
-                    printf(" / P%dJ%d  \\ ", pingouin_numero, joueur_id);
+                    printf(" /    \\ \U0001F427J%d", joueur_id);
                 } else if (poissons[i - 1][j + 1] == 3) {
-                    printf(" / \U0001F41F\U0001F41F \\");
+                    printf(" /    \\ \U0001F41F\U0001F41F");
                 } else if (poissons[i - 1][j + 1] == 2) {
-                    printf(" /  \U0001F41F  \\ ");
+                    printf(" /    \\  \U0001F41F ");
                 }
-            }
-            if (j == colonne - 2 && i != 0) {
-                printf(" /");
-            }
+                }
+                if (j==colonne-2 && i != 0){
+                    printf(" /") ;
+                }
         }
         printf("\n");
 
@@ -56,18 +56,18 @@ void essai(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueu
                 }
             }
             if (j != colonne - 1) {
-                if (poissons[i][j] == 0 || poissons[i][j] == 4) {
+                if (poissons[i][j] == 0 || (poissons[i][j] == 4 && joueur_id == -1) ) {
                     printf("/      \\____");
                 } else if (joueur_id != -1) {
-                    printf("/P%dJ%d\\____", pingouin_numero, joueur_id);
+                    printf("/  P%d  \\____", pingouin_numero);
                 } else {
                     printf("/  \U0001F41F  \\____");
                 }
             } else {
-                if (poissons[i][j] == 0 || poissons[i][j] == 4) {
+                if (poissons[i][j] == 0 || poissons[i][j] == 4 && joueur_id == -1) {
                     printf("/      \\");
                 } else if (joueur_id != -1) {
-                    printf("/P%dJ%d\\", pingouin_numero, joueur_id);
+                    printf("/  P%d  \\____", pingouin_numero-1);
                 } else {
                     printf("/  \U0001F41F  \\");
                 }
@@ -90,10 +90,10 @@ void essai(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueu
                     }
                 }
             }
-            if (poissons[i][j] == 0 || poissons[i][j] == 1) {
+            if (poissons[i][j] == 0 || poissons[i][j] == 1 && joueur_id == -1) {
                 printf("\\      /    ");
             } else if (joueur_id != -1) {
-                printf("\\P%dJ%d/    ", pingouin_numero, joueur_id);
+                printf("\\ \U0001F427J%d /    ", joueur_id);
             } else if (poissons[i][j] == 3) {
                 printf("\\ \U0001F41F\U0001F41F /    ");
             } else if (poissons[i][j] == 2) {
@@ -111,17 +111,19 @@ void essai(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueu
             int pingouin_numero = -1;
             for (int k = 0; k < nbre_joueur; k++) {
                 for (int p = 0; p < joueurs[k].nombre_pingouins; p++) {
-                    if (joueurs[k].pingouins[p].x == i && joueurs[k].pingouins[p].y == j) {
+                    if (joueurs[k].pingouins[p].x == i && joueurs[k].pingouins[p].y == j+1) {
                         joueur_id = joueurs[k].numero;
                         pingouin_numero = joueurs[k].pingouins[p].numero_pingouin;
                     }
                 }
             }
-            if (i == ligne - 1 || j == colonne - 1 || poissons[i][j + 1] == 4) {
+            if (i == ligne - 1 || j == colonne - 1) {
                 printf(" \\____/     ");
             } else {
-                if (poissons[i][j + 1] != 0) {
+                if (poissons[i][j + 1] != 0 && poissons[i][j + 1] != 4) {
                     printf(" \\____/  \U0001F41F ");
+                } else if (joueur_id != -1 || poissons[i][j + 1] == 4) {
+                    printf(" \\____/  P%d ", pingouin_numero-1);
                 } else {
                     printf(" \\____/     ");
                 }

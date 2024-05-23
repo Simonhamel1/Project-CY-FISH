@@ -90,8 +90,8 @@ int main() {
 
     // Affichage du support de jeu en fonction du nombre de colonnes
     if ((colonne % 2) == 0) {
-        essai(ligne, colonne, poissons, nbre_joueur, joueurs);
-        //afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
+        //essai(ligne, colonne, poissons, nbre_joueur, joueurs);
+        afficher_support_de_jeux_pair(ligne, colonne, poissons, nbre_joueur, joueurs);
     } else {
         afficher_support_de_jeux_impair(ligne, colonne, poissons, nbre_joueur, joueurs);
     }
