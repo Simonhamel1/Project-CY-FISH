@@ -1,1 +1,0 @@
-pour afficher les smilley sur windows CMD il faut ecrire "chcp 65001" 
