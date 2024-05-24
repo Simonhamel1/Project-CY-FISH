@@ -1,5 +1,5 @@
-#include "../afficher_support_de_jeux_pair.h"
-#include "../afficher_support_de_jeux_impair.h"
+#include "../afficher/afficher_support_de_jeux_pair.h"
+#include "../afficher/afficher_support_de_jeux_impair.h"
 #include "afficher_joueur.h"
 #include "afficher_pingouin.h"
 #include "ajouter_points.h"

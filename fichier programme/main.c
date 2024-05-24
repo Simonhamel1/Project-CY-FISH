@@ -12,14 +12,16 @@
 #include "gestion_du_jeu/afficher_pingouin.c"
 #include "gestion_du_jeu/derouler_du_jeu_automatique.c"
 #include "initialisation/initialiser_joueur/player.h"
-#include "afficher_support_de_jeux_pair.c"
-#include "afficher_support_de_jeux_impair.c"
+#include "afficher/afficher_support_de_jeux_pair.c"
+#include "afficher/afficher_support_de_jeux_impair.c"
+#include "afficher/afficher_support_de_jeux_pair.h"
+#include "afficher/afficher_support_de_jeux_impair.h"
 #include "initialisation/initialiser_joueur/initialiser_joueurs.c"
 #include "initialisation/initialiser_pingouin.c"
 #include "initialisation/placement.h"
-#include "demander_case.c"
-#include "essai.h"
-#include "essai.c"
+#include "gestion_du_jeu/demander_case.c"
+#include "inutile/essai.h"
+#include "inutile/essai.c"
 
 
 int main() {
