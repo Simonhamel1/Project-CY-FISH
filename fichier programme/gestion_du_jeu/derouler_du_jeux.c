@@ -13,6 +13,7 @@
 #define FISH_ROTTEN 2
 #define FISH_GOLDEN 3
 
+//fonction derouler jeu
 void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6], int variante) {
     bool jeu_termine = false;
 

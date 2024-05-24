@@ -2,6 +2,8 @@
 #include "case.h"
 #include "../initialisation/initialiser_joueur/player.h"
 
+
+// Fonction pour déplacer un pingouin
 void deplacer_pingouin(Case** poissons, int colonne, int ligne, Joueur* joueurs, int nbre_joueur, int joueur_index, Case case_choisie, Pingouin pingouin_choisi, int variante) {
     int x = pingouin_choisi.x;
     int y = pingouin_choisi.y;

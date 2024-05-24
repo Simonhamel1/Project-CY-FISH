@@ -1,4 +1,3 @@
-#include "../inutile/essai.h"
 #include <stdio.h>
 #include "../initialisation/initialiser_joueur/player.h"
 

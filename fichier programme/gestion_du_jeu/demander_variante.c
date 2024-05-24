@@ -17,7 +17,7 @@ int choisir_variante() {
         printf("Choix invalide. Veuillez choisir une variante valide:\n");
         scanf("%d", &variante);    
 
-        while (getchar() != '\n');
+        while (getchar() != '\n'); // Vider le tampon d'entrée pour éviter les problèmes de lecture ultérieure
     }
     
     return variante;

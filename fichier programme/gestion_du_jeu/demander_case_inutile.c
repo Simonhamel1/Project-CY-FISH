@@ -1,3 +1,4 @@
+// fonction demander case inutile nous l'avons utilisé pour verifier si les poissons etaient dans les bonnes cases
 void demander_case(int** poissons){
     printf("\nvous voulez voir quelle case ? ");
     int case_x,case_y;
@@ -6,6 +7,7 @@ void demander_case(int** poissons){
     int choix;
     printf("\nvous voulez revoir une case (1->non) ? ");
     scanf("%d",&choix);
+    // verification choix 
     while (choix !=1 ){
         printf("\nquelle case ? ");
         scanf("%d %d",& case_x,&case_y);

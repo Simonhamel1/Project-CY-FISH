@@ -1,5 +1,7 @@
 #include "player.h"
 #include "../../gestion_du_jeu/afficher_joueur.c"
+
+// Function initialiser joueurs
 void initialiser_joueurs(int nbre_joueur, Joueur joueurs[6]) {
 
         for (int i = 0; i < nbre_joueur; i++) {

@@ -4,4 +4,4 @@
 
 void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6]);
 
-#endif // AFFICHER_SUPPORT_DE_JEUX_IMPAIR_H
+#endif // AFFICHER_SUPPORT_DE_JEUX_IMPAIR_H 

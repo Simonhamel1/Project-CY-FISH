@@ -40,7 +40,7 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int
         }
         printf("\n");
 
-        // Affichage de la partie intermédiaire du motif avec des poissons et des pingouins
+        // Affichage de la partie intermédiaire du motif avec des poissons et le numero des pingouins
         for (int j = 0; j < colonne; j += 2) {
             int joueur_id = -1;
             int pingouin_numero = -1;
@@ -102,7 +102,7 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int
         }
         printf("\n");
 
-        // Affichage de la partie inférieure du motif avec des poissons et des pingouins
+        // Affichage de la partie inférieure du motif avec des poissons et des numeros de pingouins
         for (int j = 0; j < colonne; j += 2) {
             int joueur_id = -1;
             int pingouin_numero = -1;

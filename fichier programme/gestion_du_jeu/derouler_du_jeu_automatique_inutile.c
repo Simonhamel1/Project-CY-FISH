@@ -11,6 +11,8 @@
 #define FISH_NORMAL 1
 #define FISH_ROTTEN 2
 #define FISH_GOLDEN 3
+
+//fonction derouler jeu automatique
 void derouler_jeu_automatique(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6], int variante) {
     bool jeu_termine = false;
     while (!jeu_termine) {
