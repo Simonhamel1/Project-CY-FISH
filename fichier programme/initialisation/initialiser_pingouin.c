@@ -4,7 +4,7 @@
 #include "initialiser_pingouin.h"
 
 // fonction definir le nombre de pingouin par joueurs
-int definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) {
+int definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) { 
     int pingouins_par_joueur;
 
     while (1) {
