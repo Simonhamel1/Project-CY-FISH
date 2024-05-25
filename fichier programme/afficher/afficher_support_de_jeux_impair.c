@@ -18,12 +18,10 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int
                 printf(" /    \\     ");
             } else {
                 int joueur_id = -1;
-                int pingouin_numero = -1;
                 for (int k = 0; k < nbre_joueur; k++) {
                     for (int p = 0; p < joueurs[k].nombre_pingouins; p++) {
                         if (joueurs[k].pingouins[p].x == i - 1 && joueurs[k].pingouins[p].y == j + 1) {
                             joueur_id = joueurs[k].numero;
-                            pingouin_numero = joueurs[k].pingouins[p].numero_pingouin;
                         }
                     }
                 }
@@ -78,12 +76,10 @@ void afficher_support_de_jeux_impair(int ligne, int colonne, int **poissons, int
         // Affichage de la dernière ligne du motif avec des poissons et des pingouins
         for (int j = 0; j < colonne; j += 2) {
             int joueur_id = -1;
-            int pingouin_numero = -1;
             for (int k = 0; k < nbre_joueur; k++) {
                 for (int p = 0; p < joueurs[k].nombre_pingouins; p++) {
                     if (joueurs[k].pingouins[p].x == i && joueurs[k].pingouins[p].y == j) {
                         joueur_id = joueurs[k].numero;
-                        pingouin_numero = joueurs[k].pingouins[p].numero_pingouin;
                     }
                 }
             }
