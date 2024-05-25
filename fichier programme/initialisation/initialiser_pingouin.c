@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "initialiser_joueur/player.h"
-#include "initialiser_poissons.c"
+#include "initialiser_pingouin.h"
 
 // fonction definir le nombre de pingouin par joueurs
 int definir_nombre_pingouins(Joueur* joueurs, int nb_joueur) {

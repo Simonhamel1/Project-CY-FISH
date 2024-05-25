@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "demander_variante.h"
 // Définition des constantes pour les variantes
 #define FISH_NORMAL 1
 #define FISH_ROTTEN 2

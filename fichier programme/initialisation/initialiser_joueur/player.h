@@ -1,5 +1,6 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
+#include <stdio.h>
 
 // Structure pour les pingouins
 typedef struct {

@@ -64,7 +64,7 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int n
                     printf("/  \U0001F41F  \\____");
                 }
             } else {
-                if (poissons[i][j] == 0 || poissons[i][j] == 4 && joueur_id == -1) {
+                if (poissons[i][j] == 0 || (poissons[i][j] == 4 && joueur_id == -1)) {
                     printf("/      \\");
                 } else if (joueur_id != -1) {
                     printf("/  P%d  \\____", pingouin_numero-1);
@@ -90,7 +90,7 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int n
                     }
                 }
             }
-            if (poissons[i][j] == 0 || poissons[i][j] == 1 && joueur_id == -1) {
+            if (poissons[i][j] == 0 || (poissons[i][j] == 1 && joueur_id == -1)) {
                 printf("\\      /    ");
             } else if (joueur_id != -1) {
                 printf("\\ \U0001F427J%d /    ", joueur_id);

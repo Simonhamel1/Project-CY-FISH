@@ -1,6 +1,5 @@
-#include "player.h"
-#include "../../gestion_du_jeu/afficher_joueur.c"
-
+#include "initialiser_joueurs.h"
+#include <stdio.h>
 // Function initialiser joueurs
 void initialiser_joueurs(int nbre_joueur, Joueur joueurs[6]) {
 

@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include "initialiser_poissons.h"
 
 // fonction initialiser poissons
 void initialiser_poissons(int ligne, int colonne, int** poissons, int pingouin_par_joueur , int nbre_joueur) {
