@@ -16,8 +16,8 @@ bool mouvement_valide(int x, int y, int nouvelle_x, int nouvelle_y, int ligne, i
 
 }
 
-
-bool joueur_peut_bouger(Joueur joueur, int ligne, int colonne, int **poissons) {
+// fonction verifiant si le joueur peut se deplacer la focntion bool renvoie TRUE OU FALSE .
+bool joueur_peut_bouger(Joueur joueur, int ligne, int colonne, int **poissons) { 
     for (int i = 0; i < joueur.nombre_pingouins; i++) {
         int x = joueur.pingouins[i].x;
         int y = joueur.pingouins[i].y;
@@ -34,7 +34,7 @@ bool joueur_peut_bouger(Joueur joueur, int ligne, int colonne, int **poissons) {
     return false;
 }
 
-
+// fonction verifiant si le pingouin peut se deplacer la focntion bool renvoie TRUE OU FALSE .
 bool pingouin_peut_bouger(Pingouin pingouin, int ligne, int colonne, int **poissons) {
     int x = pingouin.x;
     int y = pingouin.y;

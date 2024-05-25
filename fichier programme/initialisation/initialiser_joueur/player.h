@@ -1,11 +1,13 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
+// Structure pour les pingouins
 typedef struct {
     int x, y;
     int numero_pingouin ;
 } Pingouin;
 
+// Structure pour les joueurs
 typedef struct {
     int numero;
     char nom[50];
