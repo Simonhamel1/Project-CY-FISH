@@ -6,6 +6,10 @@
 // Fonction pour vérifier si le mouvement est valide
 bool mouvement_valide(int x, int y, int nouvelle_x, int nouvelle_y, int ligne, int colonne, int **poissons) {
     // Vérification des limites du plateau et des cases interdites
+
+    (void)x;  // Suppression de l'avertissement unused parameter
+    (void)y;  // Suppression de l'avertissement unused parameter
+    
     if (nouvelle_x < 0 || nouvelle_x >= ligne || nouvelle_y < 0 || nouvelle_y >= colonne || poissons[nouvelle_x][nouvelle_y] == 0 || poissons[nouvelle_x][nouvelle_y] == 4 || ((nouvelle_x==ligne-1) &&(nouvelle_y %2==1))) {
         return false;
     }
@@ -16,7 +20,7 @@ bool mouvement_valide(int x, int y, int nouvelle_x, int nouvelle_y, int ligne, i
 
 }
 
-// fonction verifiant si le joueur peut se deplacer la focntion bool renvoie TRUE OU FALSE .
+// fonction verifiant si le joueur peut se deplacer la fonction bool renvoie TRUE OU FALSE .
 bool joueur_peut_bouger(Joueur joueur, int ligne, int colonne, int **poissons) { 
     for (int i = 0; i < joueur.nombre_pingouins; i++) {
         int x = joueur.pingouins[i].x;

@@ -18,13 +18,10 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int n
                 printf(" /    \\     ");
             } else {
                 int joueur_id = -1;
-                int pingouin_numero = -1;
                 for (int k = 0; k < nbre_joueur; k++) {
                     for (int p = 0; p < joueurs[k].nombre_pingouins; p++) {
                         if (joueurs[k].pingouins[p].x == i - 1 && joueurs[k].pingouins[p].y == j + 1) {
-                            joueur_id = joueurs[k].numero;
-                            pingouin_numero = joueurs[k].pingouins[p].numero_pingouin;
-                        }
+                            joueur_id = joueurs[k].numero;                        }
                     }
                 }
                 if (poissons[i - 1][j + 1] == 0 || poissons[i-1][j+1]== 1 || j == colonne-1)  {
@@ -64,7 +61,7 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int n
                     printf("/  \U0001F41F  \\____");
                 }
             } else {
-                if (poissons[i][j] == 0 || poissons[i][j] == 4 && joueur_id == -1) {
+                if (poissons[i][j] == 0 || (poissons[i][j] == 4 && joueur_id == -1)) {
                     printf("/      \\");
                 } else if (joueur_id != -1) {
                     printf("/  P%d  \\____", pingouin_numero-1);
@@ -81,16 +78,14 @@ void afficher_support_de_jeux_pair(int ligne, int colonne, int **poissons, int n
         // Affichage de la dernière ligne du motif avec des poissons
         for (int j = 0; j < colonne; j += 2) {
             int joueur_id = -1;
-            int pingouin_numero = -1;
             for (int k = 0; k < nbre_joueur; k++) {
                 for (int p = 0; p < joueurs[k].nombre_pingouins; p++) {
                     if (joueurs[k].pingouins[p].x == i && joueurs[k].pingouins[p].y == j) {
                         joueur_id = joueurs[k].numero;
-                        pingouin_numero = joueurs[k].pingouins[p].numero_pingouin;
                     }
                 }
             }
-            if (poissons[i][j] == 0 || poissons[i][j] == 1 && joueur_id == -1) {
+            if (poissons[i][j] == 0 || (poissons[i][j] == 1 && joueur_id == -1)) {
                 printf("\\      /    ");
             } else if (joueur_id != -1) {
                 printf("\\ \U0001F427J%d /    ", joueur_id);

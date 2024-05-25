@@ -1,6 +1,7 @@
 #ifndef MOUVEMENT_H
 #define MOUVEMENT_H
 #include <stdbool.h>
+#include <stdio.h>
 #include "../initialisation/initialiser_joueur/player.h"
 
 // focntion mouvement valide

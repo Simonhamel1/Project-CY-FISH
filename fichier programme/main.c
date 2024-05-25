@@ -3,23 +3,20 @@
 #include <stdbool.h>
 #include <time.h>
 
-#include "gestion_du_jeu/derouler_du_jeux.c"
-#include "gestion_du_jeu/demander_variante.c"
-#include "gestion_du_jeu/ajouter_points.c"
+#include "gestion_du_jeu/derouler_du_jeux.h"
+#include "gestion_du_jeu/demander_variante.h"
+#include "gestion_du_jeu/ajouter_points.h"
 #include "gestion_du_jeu/case.h"
 #include "gestion_du_jeu/mouvement.h"
-#include "gestion_du_jeu/mouvement.c"
-#include "gestion_du_jeu/afficher_pingouin.c"
-#include "gestion_du_jeu/derouler_du_jeu_automatique_inutile.c"
+#include "gestion_du_jeu/afficher_pingouin.h"
+#include "gestion_du_jeu/derouler_du_jeu_automatique.h"
 #include "initialisation/initialiser_joueur/player.h"
-#include "afficher/afficher_support_de_jeux_pair.c"
-#include "afficher/afficher_support_de_jeux_impair.c"
 #include "afficher/afficher_support_de_jeux_pair.h"
 #include "afficher/afficher_support_de_jeux_impair.h"
-#include "initialisation/initialiser_joueur/initialiser_joueurs.c"
-#include "initialisation/initialiser_pingouin.c"
+#include "initialisation/initialiser_joueur/initialiser_joueurs.h"
+#include "initialisation/initialiser_pingouin.h"
 #include "initialisation/placement.h"
-#include "gestion_du_jeu/demander_case_inutile.c"
+#include "gestion_du_jeu/demander_case_inutile.h"
 
 
 int main() {
@@ -99,8 +96,21 @@ int main() {
     }
 
     // Dérouler le jeu
-    derouler_jeu(ligne, colonne, poissons, nbre_joueur, joueurs, mode );
-    //derouler_jeu_automatique(ligne, colonne, poissons, nbre_joueur, joueurs, mode);       // utilisation lors des essai pour gagner du temps et voir les bugs
+    printf ("voulez vous voir les bots jouer entre eux (0-> oui non -> 1 ) : ");
+    int choix;
+    scanf("%d",&choix);
+    while (choix != 1 && choix != 0)
+    {
+        printf("Redonnez votre choix (1-> oui non -> 0 ) : ");
+        scanf("%d", &choix);
+        while (getchar() != '\n'); // Vider le tampon d'entrée pour éviter les problèmes de lecture ultérieure
+    }
+    if (choix == 1){
+        derouler_jeu(ligne, colonne, poissons, nbre_joueur, joueurs, mode );
+    }
+    else{
+        derouler_jeu_automatique(ligne, colonne, poissons, nbre_joueur, joueurs, mode); // utilisation lors des essai pour gagner du temps et voir les bugs
+    }
 
     // Libération de la mémoire allouée pour le tableau dynamique
     for (int i = 0; i < ligne; i++) {

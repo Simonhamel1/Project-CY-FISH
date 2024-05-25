@@ -1,4 +1,7 @@
 // fonction demander case inutile nous l'avons utilisé pour verifier si les poissons etaient dans les bonnes cases
+#include <stdio.h>
+#include "demander_case_inutile.h"
+
 void demander_case(int** poissons){
     printf("\nvous voulez voir quelle case ? ");
     int case_x,case_y;

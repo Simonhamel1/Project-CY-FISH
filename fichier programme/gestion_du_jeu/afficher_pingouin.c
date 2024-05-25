@@ -1,5 +1,6 @@
 #include "../initialisation/initialiser_joueur/player.h"
 #include "afficher_pingouin.h"
+#include <stdio.h>
 
 // Fonction pour afficher les pingouins
 void afficher_pingouin(int nb_joueur, Joueur joueurs[6], int **poissons) {
