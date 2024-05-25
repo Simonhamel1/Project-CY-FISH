@@ -6,3 +6,5 @@ Membre du groupe : Bendaoued Idris
 
 
 Pour lancer le programme il faut lancer le code main.c en utilisant sur CMD gcc main.c puis ensuite lancer le fichier créé nommé a.exe 
+
+Pour les explication de notre organisation,de notre code ou meme de nos difficultées rencontrées veuillez lire notre rapport de projet suivant (<Rapport projet.pdf>)
