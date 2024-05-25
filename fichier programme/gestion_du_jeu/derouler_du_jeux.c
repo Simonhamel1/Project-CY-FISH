@@ -13,7 +13,7 @@
 #define FISH_ROTTEN 2
 #define FISH_GOLDEN 3
 
-//fonction derouler jeu
+// Fonction derouler jeu
 void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueur joueurs[6], int variante) {
     bool jeu_termine = false;
 
@@ -21,7 +21,7 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
         jeu_termine = true;
         for (int i = 0; i < nbre_joueur; i++) {
             printf("Tour de %s\n", joueurs[i].nom);
-            
+
             bool pingouin_peut_se_deplacer = false;
             for (int j = 0; j < joueurs[i].nombre_pingouins; j++) {
                 if (pingouin_peut_bouger(joueurs[i].pingouins[j], ligne, colonne, poissons)) {
@@ -29,23 +29,34 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                     break;
                 }
             }
-            
-            if (pingouin_peut_se_deplacer== true ) {
+
+            if (pingouin_peut_se_deplacer) {
                 jeu_termine = false;
 
                 int pingouin_id = -1;
-                while (pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)==false) {
-                    printf("Choisissez le pingouin à déplacer (0 à %d) : ", joueurs[i].nombre_pingouins - 1);
+                while (true) {
+                    printf("Choisissez le pingouin à déplacer (0 à %d) (-1 si vous voulez quitter la partie) : ", joueurs[i].nombre_pingouins - 1);
                     scanf("%d", &pingouin_id);
-                    if ( pingouin_id < 0 || pingouin_id >= joueurs[i].nombre_pingouins || !pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)) {
-                        while (getchar() != '\n'); // Clear input buffer
-                        pingouin_id = -1;
-                        printf("Entrée invalide ou pingouin ne peut pas bouger. ");
-                        printf("redonner le numéro du pingouin : ");
-                        scanf("%d", &pingouin_id);
-                        while (getchar() != '\n'); // Clear input buffer
+                    if (pingouin_id == -1) {
+                        printf("Voulez-vous vraiment quitter la partie ? (1: oui, 0: non) : ");
+                        int quitter = -1;
+                        scanf("%d", &quitter);
+                        while (getchar() != '\n'); // Vider le tampon d'entrée pour éviter les problèmes de lecture ultérieure
+                        if (quitter == 1) {
+                            jeu_termine = true;
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                    if (pingouin_id >= 0 && pingouin_id < joueurs[i].nombre_pingouins && pingouin_peut_bouger(joueurs[i].pingouins[pingouin_id], ligne, colonne, poissons)) {
+                        break;
+                    } else {
+                        printf("Entrée invalide ou le pingouin ne peut pas bouger. Veuillez réessayer.\n");
                     }
                 }
+
+                if (jeu_termine) break; // Sort de la boucle principale si le joueur a choisi de quitter
 
                 bool mouvement_valide_flag = false;
                 while (!mouvement_valide_flag) {
@@ -53,22 +64,21 @@ void derouler_jeu(int ligne, int colonne, int **poissons, int nbre_joueur, Joueu
                     while (direction < 0 || direction > 5) {
                         printf("Choisissez la direction (0: haut, 1: bas, 2: haut gauche, 3: bas-droite, 4: haut-droite, 5: bas-gauche) : ");
                         scanf("%d", &direction);
-                        if ( direction < 0 || direction > 5) {
-                            printf("Entrée invalide. ");
-                            scanf("%d", &direction);
-                            while (getchar() != '\n'); // Clear input buffer
+                        if (direction < 0 || direction > 5) {
+                            printf("Entrée invalide. Veuillez réessayer.\n");
                         }
+                        while (getchar() != '\n'); // Vider le tampon d'entrée pour éviter les problèmes de lecture ultérieure
                     }
 
-                     int dx = 0, dy = 0;
-                switch (direction) {
-                    case 0: dx = -1; break; // haut
-                    case 1: dx = 1; break; // bas
-                    case 2: if (joueurs[i].pingouins[pingouin_id].y %2 == 0) {dy = -1; dx=-1 ;break; } else {dy = -1 ; break; } // haut-gauche
-                    case 3: if (joueurs[i].pingouins[pingouin_id].y %2 == 0) {dy = 1; break; } else {dy = 1; dx=1; break; } // bas-droite
-                    case 4: if (joueurs[i].pingouins[pingouin_id].y %2 == 0) {dy = 1; dx=-1; break; } else {dy = 1; break; } // haut-droite
-                    case 5: if (joueurs[i].pingouins[pingouin_id].y %2 == 0) {dy = -1; break; } else {dy = -1; dx=1; break; } // bas-gauche
-                }
+                    int dx = 0, dy = 0;
+                    switch (direction) {
+                        case 0: dx = -1; break; // haut
+                        case 1: dx = 1; break; // bas
+                        case 2: if (joueurs[i].pingouins[pingouin_id].y % 2 == 0) { dy = -1; dx = -1; } else { dy = -1; } break; // haut-gauche
+                        case 3: if (joueurs[i].pingouins[pingouin_id].y % 2 == 0) { dy = 1; } else { dy = 1; dx = 1; } break; // bas-droite
+                        case 4: if (joueurs[i].pingouins[pingouin_id].y % 2 == 0) { dy = 1; dx = -1; } else { dy = 1; } break; // haut-droite
+                        case 5: if (joueurs[i].pingouins[pingouin_id].y % 2 == 0) { dy = -1; } else { dy = -1; dx = 1; } break; // bas-gauche
+                    }
 
                     int nouvelle_x = joueurs[i].pingouins[pingouin_id].x + dx;
                     int nouvelle_y = joueurs[i].pingouins[pingouin_id].y + dy;
