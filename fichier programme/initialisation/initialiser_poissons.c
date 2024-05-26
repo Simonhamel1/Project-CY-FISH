@@ -41,7 +41,7 @@ void initialiser_poissons(int ligne, int colonne, int** poissons, int pingouin_p
     }
 
     //verification du nombre de poissons possible
-    int compteur ;
+    int compteur = 0;
     for (int i = 0 ; i< ligne ; i++){
             for (int j = 0; j < colonne  ; j++) {
                 if (poissons[i][j]==1){

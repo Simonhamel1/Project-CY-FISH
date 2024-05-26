@@ -1,4 +1,4 @@
-#ifndef AFFICHER_PINGUOIN_H
+#ifndef AFFICHER_PINGOUIN_H
 #define AFFICHER_PINGOUIN_H
 #include "../initialisation/initialiser_joueur/player.h"
 

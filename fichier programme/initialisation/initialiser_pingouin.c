@@ -54,7 +54,7 @@ void initialisation_Pingouin(Joueur* joueurs, int nb_joueur, int lignes, int col
 
     for (int i = 0; i < nb_joueur; i++) {
         for (int j = 0; j < joueurs[i].nombre_pingouins; j++) {
-            int x, y;
+            int x=0 , y=0;
             if (choix == 1) { // mode manuel 
                 printf("Entrez les coordonnées pour le pingouin %d de %s (x y) : ", joueurs[i].pingouins[j].numero_pingouin, joueurs[i].nom);
                 scanf("%d %d", &x, &y);
